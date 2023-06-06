@@ -404,6 +404,6 @@ Style DropDownTerm !Title, !Borders, !Icon, WindowListSkip, Sticky, !Closable, P
 Style TelegramDesktop !Title, !Icon, WindowListSkip, Sticky, PositionPlacement 0 0, !UsePPosition
 # Modules
 Style FvwmIdent WindowListSkip, NeverFocus, !Title
-Style FvwmButtons !Maximizable, !Iconifiable, !Title, !Borders, Sticky, NeverFocus, WindowListSkip, CirculateSkip, FixedSize, FixedPosition, !Closable, MinWindowSize 21p 21p
+Style FvwmButtons !Maximizable, !Iconifiable, !Title, !Borders, Sticky, NeverFocus, WindowListSkip, CirculateSkip, FixedSize, FixedPosition, !Closable
 Style FvwmScript !Button 3, !Button 5, PositionPlacement Center, FixedSize, FixedPosition, !Iconifiable, !Maximizable, Layer 6
 
