@@ -1,0 +1,409 @@
+### ### ### ### ### ### ### Solid FVWM configuration
+
+# X session environment variables
+#SetEnv PATH /bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:$[HOME]/.local/bin
+#SetEnv LANG en_US.utf8
+#SetEnv LANGUAGE $[LANG]
+
+# Options
+DesktopSize 1x1
+DesktopName 0 Desk 1
+DesktopName 1 Desk 2
+DesktopName 2 Desk 3
+DesktopName 3 Desk 4
+ClickTime 999
+MoveThreshold 7
+IgnoreModifiers L25
+HideGeometryWindow always
+OpaqueMoveSize unlimited
+DefaultLayers 2 4 4
+ImagePath $[FVWM_USERDIR]/icons
+InfoStoreAdd font 'Shadow=1:xft:Sans:size=10'
+InfoStoreAdd titlefont 'Shadow=1:xft:Sans:size=10:bold'
+InfoStoreAdd tray stalonetray
+InfoStoreAdd traycommand 'stalonetray -bg "#333333" --geometry 2x2 --max-geometry 2x2 --scrollbars horizontal --scrollbars-size 3 --dockapp-mode simple --kludges force_icons_size'
+#InfoStoreAdd tray wmsystemtray
+#InfoStoreAdd traycommand 'wmsystemtray --non-wmaker'
+Test (X urxvt) InfoStoreAdd terminal urxvt
+Test (!X urxvt) InfoStoreAdd terminal xterm
+
+# Titles and borders
+Style * FvwmBorder
+Style * !StippledTitle
+Style * Font '$[infostore.titlefont]'
+Style * BorderWidth 3, HandleWidth 3
+Style * SnapAttraction 6 All ScreenAll
+# Windows
+Style * CascadePlacement
+Style * EWMHUseStackingOrderHints
+Style * DecorateTransient
+Style * MinWindowSize 64p 64p
+Style * ResizeOpaque
+Style * MwmDecor
+# Icon
+Style * StickyIcon
+Style * Icon window64.png
+Style * MiniIcon window16.png
+# Focus options
+Style * ClickToFocus
+Style * FPFocusClickButtons 1
+Style * FPSortWindowlistByFocus
+Style * FPIgnoreRaiseClickMotion
+Style * !FPReleaseFocus
+
+# Default cursors
+CursorStyle ROOT left_ptr
+CursorStyle TITLE left_ptr
+CursorStyle DEFAULT left_ptr
+CursorStyle MENU left_ptr
+CursorStyle SYS left_ptr
+CursorStyle RESIZE sizing
+CursorStyle MOVE fleur
+CursorStyle WAIT watch
+
+# Menu appearance
+MenuStyle * Fvwm
+MenuStyle * TrianglesSolid
+MenuStyle * TrianglesUseFore
+MenuStyle * PopupImmediately
+MenuStyle * SubmenusLeft
+MenuStyle * Hilight3DOff
+MenuStyle * SeparatorsLong
+MenuStyle * BorderWidth 2
+MenuStyle * PopupOffset 1 99
+MenuStyle * VerticalMargins 12 12
+MenuStyle * VerticalItemSpacing 3 4
+MenuStyle * VerticalTitleSpacing 0 5
+MenuStyle * HilightBack
+MenuStyle * Font '$[infostore.font]'
+MenuStyle * TitleFont '$[infostore.font]:bold'
+MenuStyle * ItemFormat '%.12|%.1<%i%i%6l%21|'
+
+# Titlebar and borders
+TitleStyle Centered Height 24
+TitleStyle ActiveUp -- Flat
+TitleStyle ActiveDown -- Flat
+TitleStyle Inactive -- Flat
+BorderStyle Inactive -- HiddenHandles NoInset
+BorderStyle Active -- HiddenHandles NoInset
+# Titlebar buttons
+ButtonStyle 1 Vector 5 25x40@1 25x60@1 75x60@0 75x40@0 25x40@1 -- Flat
+ButtonStyle 3 Vector 5 40x40@1 60x40@1 60x60@0 40x60@0 40x40@1 -- Flat
+ButtonStyle 5 Vector 5 25x25@1 25x75@1 75x75@0 75x25@0 25x25@1 -- Flat
+ButtonStyle All ActiveDown -- !Flat
+
+# Colorset <number> background, foreground, foreground shadow
+Colorset 111 bg #111111, fg white, fgsh black
+Colorset 333 bg #333333, fg white, fgsh black
+Colorset 666 bg #666666, fg #e6e6e6, fgsh black
+# Set colorsets
+Style * HilightColorset 111, IconBackgroundColorset 333, Colorset 666
+Style * HilightBorderColorset 111, BorderColorset 666
+MenuStyle * MenuColorset 333, ActiveColorset 111
+
+#
+# Modules options
+#
+
+# Identify popup
+*FvwmIdent: Colorset 333
+*FvwmIdent: Font '$[infostore.font]'
+*FvwmIdent: MinimalLayer 4
+# Exit dialog
+*FvwmScript: DefaultFore white
+*FvwmScript: DefaultShadow black
+*FvwmScript: DefaultBack #333333
+*FvwmScript: DefaultHilight #555555
+# Dock
+*FvwmButtons: Colorset 333
+*FvwmButtons: Rows 1
+*FvwmButtons: ButtonGeometry 64x64+0-0
+*FvwmButtons: Frame 2
+*FvwmButtons: BoxSize smart
+*FvwmButtons: (Swallow(UseOld,NoClose,Respawn) $[infostore.tray] 'Exec exec $[infostore.traycommand]', Action(Mouse1) ShowDesktop, ActionIgnoresClientWindow)
+# Iconified applications
+Style * IconBox 67 0 -0 -0, IconFill l b, IconGrid 1 1
+Style * IconSize 60 60, !IconTitle, IconBackgroundRelief 2, IconBackgroundPadding 0
+# Working area - left right top bottom (number of px not covered by maximized applications)
+EwmhBaseStruts 0 0 0 63
+
+#
+# Functions
+#
+
+# FVWM initialization/start/restart functions
+AddToFunc InitFunction
+	+ I Exec exec sh $[FVWM_USERDIR]/autostart
+AddToFunc StartFunction
+	+ I Module FvwmButtons
+	+ I Module FvwmEvent
+	+ I Test (Version 2.*.*) Module FvwmCommandS
+AddToFunc RestartFunction
+	+ I Exec exec sh -c 'pkill -nx xcompmgr; sleep 1; xcompmgr -fFs -I .06 -O .6 -D 6'
+#	+ I Test (F $[HOME]/.Xmodmap) Exec exec xmodmap $[HOME]/.Xmodmap
+# Titlebar buttons click actions
+AddToFunc CloseButton
+	+ C Close
+AddToFunc IconifyButton
+	+ C Iconify
+AddToFunc MaximizeButton
+	+ C Maximize
+# Focus and Raise
+AddToFunc RaiseFocus
+	+ I Raise
+	+ I Focus
+# Reset layer, lower window and change focus
+AddToFunc LowerLayer
+	+ I ThisWindow (Layer 6) Layer 0 4
+	+ I TestRc (!Match) Lower
+	+ I TransferFocus
+# Unmaximize when move
+AddToFunc SmartMove
+	+ I Maximize false
+	+ I WarpToWindow 50 50
+	+ I Move
+# Resize dragging
+AddToFunc BorderResize
+	+ M ThisWindow Resize
+# Raise and focus when resize
+AddToFunc RaiseResize
+	+ M Raise
+	+ M FlipFocus
+	+ M Resize direction automatic
+# Raise, focus, move window and unmaximize if maximized
+AddToFunc RaiseMoveUnmaximize
+	+ I Raise
+	+ I FlipFocus
+	+ M ThisWindow (Maximized) Maximize false
+	+ M TestRc (Match) WarpToWindow 50 50
+	+ M Move
+# Don't raise, move without focus and
+# unmaximize if maximized, focus with single click
+AddToFunc MoveUnmaximize
+	+ C FlipFocus
+	+ M ThisWindow (Maximized) Maximize false
+	+ M TestRc (Match) WarpToWindow !raise 50 50
+	+ M Move
+# Maximize window to required part of screen
+AddToFunc Tiling
+	+ I ThisWindow (Maximizable) Maximize true $0 $1
+	+ I TestRc (Match) ThisWindow AnimatedMove $2 $3
+# Move to desk and chage focus
+AddToFunc MoveToDeskChangeFocus
+	+ I ThisWindow MoveToDesk 0 $0
+	+ I ThisWindow (!Focused) TransferFocus
+# Switch desk and show notification
+AddToFunc SwitchDesk
+	+ I GotoDesk $*
+	+ I Test (X dzen2) Exec exec echo $[desk.name$[desk.n]] | dzen2 -p 1 -bg gray4 -fg white -fn -13:Bold -h 27
+# Change WindowList function (Alt+Tab)
+DestroyFunc WindowListFunc
+AddToFunc WindowListFunc
+	+ I Iconify false
+	+ I FlipFocus
+	+ I Raise
+# Show/hide window title and border
+AddToFunc ToggleWindowDecor
+	+ I ThisWindow (HasHandles) WindowStyle !Title, !Borders
+	+ I ThisWindow (!HasHandles) WindowStyle Title, Borders
+# Deiconify with single click, identify with click hold
+AddToFunc LeftIconClick
+	+ C Iconify false
+	+ H FvwmIdent
+# Deiconify prev iconified application
+AddToFunc UndoIconify
+	+ I Prev (Iconic, !DropDownTerm, !TelegramDesktop) Iconify false
+	+ I TransferFocus
+# Show desktop/restore functions
+AddToFunc ShowDesktop
+	+ I All Reverse UseStack (CurrentDesk, State 9) Iconify false
+	+ I TestRc (!Match) ShowDesktopIconify
+AddToFunc ShowDesktopIconify
+	+ I All UseStack (CurrentDesk, Iconifiable, !Iconic) State 9 true
+	+ I All UseStack (CurrentDesk, Iconifiable, !Iconic) Iconify true
+# Transfer focus when iconify window and switch desk
+AddToFunc TransferFocus
+	+ I Prev (CurrentDesk, AcceptsFocus, !Iconic, !Layer 2, !Layer 6, !Overlapped, !FvwmButtons) FlipFocus
+	+ I TestRc (!Match) All Reverse UseStack (CurrentDesk, AcceptsFocus, !Iconic, !FvwmButtons) FlipFocus
+*FvwmEvent: iconify TransferFocus
+*FvwmEvent: new_desk TransferFocus
+# Transfer focus and rearrange icons when close window or icon
+AddToFunc CloseAction
+	+ I TransferFocus
+	+ I All (CurrentDesk, Iconic) PlaceAgain Icon
+*FvwmEvent: destroy_window CloseAction
+# Rearrange icons when deiconify
+AddToFunc DeiconifyAction
+	+ I All (CurrentDesk, Iconic) PlaceAgain Icon
+	# FvwmEvent part of ShowDesktop function
+	+ I All (CurrentDesk) State 9 false
+*FvwmEvent: deiconify DeiconifyAction
+# Set correct initial DropDown applications size and position
+AddToFunc NewWindowAction
+	+ I ThisWindow (DropDownTerm) ResizeMove 100 60 0 0
+	+ I ThisWindow (TelegramDesktop, !Media\ viewer) ResizeMove 555p 91 0 0
+	# FvwmEvent part of ShowDesktop function
+	+ I All (CurrentDesk) State 9 false
+*FvwmEvent: add_window NewWindowAction
+# DropDown function
+AddToFunc DropDown
+	+ I None ($1) Exec exec $0
+	+ I All ($1, Focused, !Maximized) ResizeMove $2 $3 $4 $5
+	+ I All ($1, CurrentDesk, Iconic) Iconify false
+	+ I TestRc (!Match) All ($1, !Focused) Raise
+	+ I TestRc (!Match) All ($1) Iconify true
+	+ I All ($1) FlipFocus
+# DropDown applications. Ctrl+F1 - terminal, Alt+F1 - telegram
+# Usage: DropDown 'app_command -flags' app_class width(p) height(p) position_x(p) position_y(p)
+Key F1 A C DropDown '$[infostore.terminal] -name DropDownTerm -e tmux' DropDownTerm 100 60 0 0
+Key F1 A M DropDown telegram-desktop TelegramDesktop 555p 91 0 0
+
+#
+# Keybindings
+#
+
+# Keyname	Context	Modifiers	Function		#Comment
+Mouse 1		1	A	CloseButton			#Left titlebar button left click
+Mouse 1		3	A	IconifyButton			#Middle titlebar button left click
+Mouse 1		5	A	MaximizeButton			#Right titlebar button left click 
+Mouse 2		1	A	Destroy				#Close titlebar button middle click
+Mouse 1		T	A	RaiseMoveUnmaximize		#Titlebar left click
+Mouse 1		SF	N	BorderResize			#Border left click
+Mouse 3		TSF	A	Menu WindowMenu mouse 0p 0p	#Titlebar/border right click
+Mouse 2		T	A	Maximize			#Titlebar middle click
+Mouse 2		T	4	LowerLayer			#Super+titlebar middle click
+Mouse 1		TSF	4	MoveUnmaximize			#Super+titlebar/border left click
+Mouse 1		W	4	RaiseMoveUnmaximize		#Super+window left click
+Mouse 3		WSF	4	RaiseResize			#Super+window right click
+Mouse 2		WSF	4	Menu WindowMenu mouse 0p 0p	#Super+window middle click
+Mouse 1		I	A	LeftIconClick			#Icon left click
+Mouse 3		I	A	Menu IconMenu mouse 3p 0p	#Icon right click
+Mouse 2		I	N	Close				#Icon middle click
+Mouse 1		R	A	Nop				#Desktop left click
+Mouse 3		R	A	Menu RootMenu mouse 0p 0p	#Desktop right click
+Key D		A	CM	ShowDesktop			#Ctrl+Alt+D
+Key Space	A	4	Menu WindowMenu			#Super+Space
+Key Escape	A	4	Menu RootMenu			#Super+Escape
+Key Page_Up	A	4	SwitchDesk -1 0 3		#Super+PgUp
+Key Page_Down	A	4	SwitchDesk 1 0 3		#Super+PgDown
+Key F1		A	4	SwitchDesk 0 0			#Super+F1
+Key F2		A	4	SwitchDesk 0 1			#Super+F2
+Key F3		A	4	SwitchDesk 0 2			#Super+F3
+Key F4		A	4	SwitchDesk 0 3			#Super+F4
+Key 1		A	4	MoveToDeskChangeFocus 0		#Super+1
+Key 2		A	4	MoveToDeskChangeFocus 1		#Super+2
+Key 3		A	4	MoveToDeskChangeFocus 2		#Super+3
+Key 4		A	4	MoveToDeskChangeFocus 3		#Super+4
+Key Up		A	4	Tiling 100 50 0 0		#Super+Up
+Key Down	A	4	Tiling 100 50 0 -0		#Super+Down
+Key Left	A	4	Tiling 50 100 0 0		#Super+Left
+Key Right	A	4	Tiling 50 100 -0 0		#Super+Right
+Key Q		A	4	ThisWindow Close		#Super+Q
+Key A		A	4	ThisWindow Iconify		#Super+A
+Key W		A	4	ThisWindow Maximize		#Super+W
+Key D		A	4	ThisWindow RaiseLower		#Super+D
+Key C		A	4	UndoIconify			#Super+C
+Key D		A	C4	ToggleWindowDecor		#Ctrl+Super+D
+Key Tab A S4 Prev (CurrentDesk, !Iconic, !FvwmIdent) RaiseFocus #Super+Tab
+Key Tab A 4 Next (CurrentDesk, !Iconic, !FvwmIdent) RaiseFocus  #Super+Shift+Tab
+# Desktop middle click and Alt+Tab
+Mouse 2		RD	N	WindowList NoCurrentDeskTitle, TitleForAllDesks, MaxLabelWidth 99, NoNumInDeskTitle, NoIcons
+Key Tab		A	M	WindowList Root c c NoCurrentDeskTitle, TitleForAllDesks, MaxLabelWidth 999, NoNumInDeskTitle, IconifiedAtEnd
+# Up/Down arrows when using Alt+Tab
+Key Up		M	M	MenuMoveCursor -1
+Key Down	M	M	MenuMoveCursor +1
+# Disable tear off menus
+Mouse 2		MT	A	-
+Key BackSpace	M	A	MenuLeaveSubmenu
+# Alt+F2
+Test (X dmenu_run_history) Key F2 A M Exec exec dmenu_run_history -f -nb gray20 -sb gray5 -nf gray90 -sf white -fn -12
+Test (!X dmenu_run_history) Key F2 A M Exec exec dmenu_run -f -nb gray20 -sb gray5 -nf gray90 -sf white -fn -12
+Key T		A	4	Exec exec transset -at 0.75	#Super+T
+Key X		A	CM	Exec exec xkill			#Ctrl+Alt+X
+Key L		A	CM	Exec exec xtrlock -b		#Ctrl+Alt+L
+Key Print	A	S	Exec exec scrot -p		#Shift+Print
+Key Print	A	C	Exec exec scrot -s		#Ctrl+Print
+Key Print	A	4	Exec exec scrot -p -b -u	#Super+Print
+Key Escape A C Exec exec $[infostore.terminal] -e htop		#Ctrl+Escape
+# Volume control (media keys)
+Test (X vol.sh) Key XF86AudioRaiseVolume A A Exec exec vol.sh up
+Test (X vol.sh) Key XF86AudioLowerVolume A A Exec exec vol.sh down
+#Ctrl+Super+R
+Key R		A	C4	Restart
+
+#
+# Menus
+#
+
+AddToMenu WindowMenu
++ "&1 on Top" Layer 0 6
++ "&2 Lower" LowerLayer
++ "" Nop
++ "&3 Iconify" Iconify
++ "&4 Maximize" Maximize
++ "" Nop
++ "&5 Move" SmartMove
++ "&6 Resize" Resize direction SE warptoborder
++ "" Nop
++ "&7 Move to..." Popup MoveTo
++ "&8 Toggle Sticky" Stick
++ "&9 Identify" FvwmIdent
++ "" Nop
++ "&d Destroy" Popup ConfirmDestroy
++ "&c Close" Close
+AddToMenu MoveTo
++ "Desk &1" MoveToDeskChangeFocus 0
++ "Desk &2" MoveToDeskChangeFocus 1
++ "Desk &3" MoveToDeskChangeFocus 2
++ "Desk &4" MoveToDeskChangeFocus 3
+AddToMenu ConfirmDestroy
++ "&0 Cancel" Nop
++ "&1 Destroy" Destroy
+
+AddToMenu IconMenu
++ "&1 Deiconify" Iconify false
++ "&2 Layer" Popup Layer
++ "&3 Identify" FvwmIdent
++ "" Nop
++ "&d Destroy" Popup ConfirmDestroy
++ "&c Close" Close
+AddtoMenu Layer
++ "&1 on Top" Layer 0 6
++ "&2 Lower" Layer 0 4
+
+AddToMenu RootMenu "FVWM $[version.num]" Title
+Test (X dmenu_run_history) + "&1 Run" Exec exec dmenu_run_history -f -nb gray20 -sb gray5 -nf gray90 -sf white -fn -12
+Test (!X dmenu_run_history) + "&1 Run" Exec exec dmenu_run -f -nb gray20 -sb gray5 -nf gray90 -sf white -fn -12
+Test (X xkill) + "&2 Destroy" Exec exec xkill
++ "&3 Identify" Exec exec FvwmCommand FvwmIdent
++ "" Nop
++ "&4 Terminal" Exec exec $[infostore.terminal]
++ "&5 Files" Exec exec xdg-open $[HOME]
++ "" Nop
++ "&6 Restart" Restart
++ "&7 Exit" Module FvwmScript $[FVWM_USERDIR]/exit
+
+#
+# Per application settings
+#
+
+Style URxvt MiniIcon terminal16.png, Icon terminal64.png, ResizeHintOverride
+Style XTerm MiniIcon xterm16.png, Icon xterm64.png, ResizeHintOverride
+Style conky !Maximizable, !Iconifiable, !Title, FixedSize, Sticky, EWMHIgnoreStackingOrderHints, Layer 2, WindowListSkip, CirculateSkip, NeverFocus
+Style vim Icon vim64.png, IconOverride, MiniIcon vim16.png, EWMHMiniIconOverride
+Style Gcolor? !Button 5, !Maximizable, Icon colors64.png, MiniIcon colors16.png, NoDecorHint
+Style Chromium MiniIcon chromium16.png, EWMHMiniIconOverride, Icon chromium64.png, IconOverride, !UsePPosition
+Style Gimp MiniIcon gimp16.png, EWMHMiniIconOverride, Icon gimp64.png, IconOverride
+Style MuPDF IconOverride, Icon view64.png, EWMHMiniIconOverride, MiniIcon view16.png
+Style qpdfview UseStyle MuPDF
+Style Peek TitleFormat Peek, Sticky, NoDecorHint, Layer 6
+Style Viewnior !UsePPosition
+Style Wine Lenience, HintOverride, Iconifiable, Closable
+# DropDown applications
+Style DropDownTerm !Title, !Borders, !Icon, WindowListSkip, Sticky, !Closable, PositionPlacement 0 0
+Style TelegramDesktop !Title, !Icon, WindowListSkip, Sticky, PositionPlacement 0 0, !UsePPosition
+# Modules
+Style FvwmIdent WindowListSkip, NeverFocus, !Title
+Style FvwmButtons !Maximizable, !Iconifiable, !Title, !Borders, Sticky, NeverFocus, WindowListSkip, CirculateSkip, FixedSize, FixedPosition, !Closable, MinWindowSize 21p 21p
+Style FvwmScript !Button 3, !Button 5, PositionPlacement Center, FixedSize, FixedPosition, !Iconifiable, !Maximizable, Layer 6
+

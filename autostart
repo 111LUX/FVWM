@@ -1,0 +1,23 @@
+#!/bin/sh
+xset s off -dpms
+xrdb -merge ~/.Xresources
+xcompmgr -fFs -I .06 -O .6 -D 6 &
+#conky -q -c ~/.conkyrc.clock &
+
+# Set background
+fvwm-root -r ~/.fvwm/icons/rootbg.png
+
+# For jpeg backgrounds
+#hsetroot -fill ~/.Wallpaper.jpg
+
+# Swtich keyboard layout with caps/shift+caps, right alt - compose key
+#setxkbmap -layout us,de -option "grp:shift_caps_switch,grp_led:caps,compose:ralt,terminate:ctrl_alt_bksp"
+
+# Save keyboard layout per window
+#kbdd &
+
+# Hide mouse cursor when typing
+#xbanish &
+
+# Tray keyboard layout indicator
+#sleep 3 && fbxkb &

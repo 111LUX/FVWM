@@ -1,0 +1,52 @@
+# FvwmScript script
+WindowTitle {Exit...}
+WindowSize  381 60
+Font "xft:Sans:size=10"
+Init
+ Begin
+  Do {Beep}
+ End
+
+Widget 1
+Property
+ Title {Cancel}
+ Position 63 15
+ Type PushButton
+ Value 1
+Main
+ Case message of
+  SingleClic :
+  Begin
+   Do {Nop}
+   Quit
+  End
+End
+
+Widget 2
+Property
+ Title {Poweroff}
+ Position 153 15
+ Type PushButton
+ Value 1
+Main
+ Case message of
+  SingleClic :
+  Begin
+   Do {Exec exec poweroff}
+   Quit
+  End
+End
+
+Widget 3
+Property
+ Title {Logout}
+ Position 257 15
+ Type PushButton
+ Value 1
+Main
+ Case message of
+  SingleClic :
+  Begin
+   Do {Quit}
+  End
+End
