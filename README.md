@@ -15,7 +15,7 @@ Personally, I recommend to use Devuan (devuan.org) and OpenBSD (openbsd.org), de
 
 ### INSTALLATION  
   
-**1.** Navigate to your home dir and fetch the configuration
+**1.** Install `fvwm` package, then navigate to your home dir and fetch the configuration
 ```
 $ git clone https://github.com/111LUX/FVWM.git
 ```
@@ -45,12 +45,12 @@ Few useful additional applications with short description (like fbxkb - tray key
 ---
 
 ### Xft configuration  
-To make xft fonts similar in size among all applications, to enable its hinting (in modern DEs this part is automatically handled by "settings-daemons"), xft configuration should be added to ~/.Xresources file. [Download my .Xresources](https://raw.githubusercontent.com/111LUX/777/main/.Xresources) and save it to your _$HOME_, while it will be enough to add "Xft" lines, my urxvt and xterm settings are pretty usable too. To apply it, `$ xrdb -merge ~/.Xresources` should be executed, no need to add this command to ~/.fvwm/autostart file, as it is already there.
+To make Xft fonts similar in size among all applications, to enable its hinting (in modern DEs this part is automatically handled by "settings-daemons"), xft configuration should be added to ~/.Xresources file. [Download my .Xresources](https://raw.githubusercontent.com/111LUX/777/main/.Xresources) and save it to your _$HOME_, while it will be enough to add "Xft" lines, my urxvt and xterm settings are pretty usable too. To apply it, `$ xrdb -merge ~/.Xresources` should be executed, no need to add this command to ~/.fvwm/autostart file, as it is already there.
 
 ---
 
 ### Keybindings
-To iconify (minimize) all applications/restore — ShowDesktop function should be used, it is available via Ctrl+Alt+D, or when pressing dock tray borders (bottom left corner click). Icon middle click will close iconified application, window title middle click will maximize/unmaximize window, close title button middle click will kill application. Some other common keybindings: Super+Q - close, Super+A - iconify, Super+C - deiconify previous, Super+W - maximize, Super+D - lower/raise window. Alt+Tab is working as expected, Super+Tab/Super+Shift+Tab - raise and focus next/prev window. All keybindings may be found under "Keybindings" section of ~/.fvwm/config .  
+To iconify (minimize) all applications/restore — ShowDesktop function should be used, it is available via Ctrl+Alt+D, or when pressing dock tray borders (screen bottom left corner click). Icon middle click will close iconified application, window title middle click will maximize/unmaximize window, close title button middle click will kill application. Some other common keybindings: Super+Q - close, Super+A - iconify, Super+C - deiconify previous, Super+W - maximize, Super+D - lower/raise window. Alt+Tab is working as expected, Super+Tab/Super+Shift+Tab - raise and focus next/prev window. All keybindings may be found under "Keybindings" section of ~/.fvwm/config .  
 
 To enable dzen2 sound volume notifications, when using sound media keys, [download vol.sh script](https://raw.githubusercontent.com/111LUX/777/main/vol.sh), save "vol.sh" to your _$PATH_ as executable and restart FVWM.  No further configuration required, as these lines are already present in ~/.fvwm/config :
 ```
@@ -60,4 +60,4 @@ Test (X vol.sh) Key XF86AudioLowerVolume A A Exec exec vol.sh down
   
 ### Time and date  
 ![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/0707time.png)  
-To view current time and date in bottom right corner of root window, install conky, [download .conkyrc.clock file](https://raw.githubusercontent.com/111LUX/777/main/.conkyrc.clock) and save it as ~/.conkyrc.clock . Uncomment `conky -q -c ~/.conkyrc.clock &` line in ~/.fvwm/autostart and it will be automatically started on startup.
+To view current time and date in bottom right corner of root window, install `conky`, [download .conkyrc.clock file](https://raw.githubusercontent.com/111LUX/777/main/.conkyrc.clock) and save it as ~/.conkyrc.clock . Uncomment `conky -q -c ~/.conkyrc.clock &` line in ~/.fvwm/autostart and it will be automatically started on startup.
