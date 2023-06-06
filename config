@@ -313,9 +313,9 @@ Key Tab		A	M	WindowList Root c c NoCurrentDeskTitle, TitleForAllDesks, MaxLabelW
 Key Up		M	M	MenuMoveCursor -1
 Key Down	M	M	MenuMoveCursor +1
 # Disable tear off menus and F1 root menu
-Mouse 2         MT      A       -
-Key BackSpace   M       A       MenuLeaveSubmenu
-Key F1          R       A       -
+Mouse 2		MT	A	-
+Key BackSpace	M	A	MenuLeaveSubmenu
+Key F1		R	A	-
 # Alt+F2
 Test (X dmenu_run_history) Key F2 A M Exec exec dmenu_run_history -f -nb gray20 -sb gray5 -nf gray90 -sf white -fn -12
 Test (!X dmenu_run_history) Key F2 A M Exec exec dmenu_run -f -nb gray20 -sb gray5 -nf gray90 -sf white -fn -12
