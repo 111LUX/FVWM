@@ -21,7 +21,7 @@ $ git clone https://github.com/111LUX/FVWM.git
 ```
 **2.** Remove any old FVWM configuration if exists and rename fetched directory
 ```
-$ mv ~/FVWM ~/.fvwm
+$ rm -rf .fvwm ; mv ~/FVWM ~/.fvwm
 ```
 **3.** Install the following packages
 ```
