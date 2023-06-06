@@ -255,7 +255,7 @@ AddToFunc DropDown
 	+ I All ($1) FlipFocus
 # DropDown applications. Ctrl+F1 - terminal, Alt+F1 - telegram
 # Usage: DropDown 'app_command -flags' app_class width(p) height(p) position_x(p) position_y(p)
-Key F1 A C DropDown '$[infostore.terminal] -name DropDownTerm -e tmux' DropDownTerm 100 60 0 0
+Key F1 A C DropDown '$[infostore.terminal] -name DropDownTerm' DropDownTerm 100 60 0 0
 Key F1 A M DropDown telegram-desktop TelegramDesktop 555p 91 0 0
 
 #
