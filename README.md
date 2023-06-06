@@ -60,4 +60,4 @@ Test (X vol.sh) Key XF86AudioLowerVolume A A Exec exec vol.sh down
   
 ### Time and date  
 ![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/0707time.png)  
-To view current time and date in bottom right corner of root window, install `conky`, [download .conkyrc.clock file](https://raw.githubusercontent.com/111LUX/777/main/.conkyrc.clock) and save it as ~/.conkyrc.clock . Uncomment `conky -q -c ~/.conkyrc.clock &` line in ~/.fvwm/autostart and it will be automatically started on startup.
+To view current time and date in bottom right corner of root window, install `conky`, [download .conkyrc.clock file](https://raw.githubusercontent.com/111LUX/777/main/.conkyrc.clock) and save it as ~/.conkyrc.clock . Uncomment `conky -q -c ~/.conkyrc.clock &` line in ~/.fvwm/autostart and it will be automatically started on FVWM startup.
