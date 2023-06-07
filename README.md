@@ -20,8 +20,9 @@ Personally, I recommend to use Devuan (devuan.org) and OpenBSD (openbsd.org), de
 $ git clone https://github.com/111LUX/FVWM.git
 ```
 **2.** Remove any old FVWM configuration if exists and rename fetched directory
+(FVWM may create empty ~/.fvwm directory with its first launch, so remove it `$ rmdir ~/.fvwm`)
 ```
-$ rm -rf ~/.fvwm ; mv ~/FVWM ~/.fvwm
+$ mv ~/FVWM ~/.fvwm
 ```
 **3.** Install the following packages
 ```
