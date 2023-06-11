@@ -5,7 +5,16 @@
 #SetEnv LANG en_US.utf8
 #SetEnv LANGUAGE $[LANG]
 
+# Store information in local variables
+InfoStoreAdd font 'Shadow=1:xft:Sans:size=10'
+InfoStoreAdd titlefont 'Shadow=1:xft:Sans:size=10:bold'
+InfoStoreAdd tray stalonetray
+InfoStoreAdd traycommand 'stalonetray -bg "#333333" --geometry 2x2 --max-geometry 2x2 --scrollbars horizontal --scrollbars-size 3 --dockapp-mode simple --kludges force_icons_size'
+Test (X urxvt) InfoStoreAdd terminal urxvt
+Test (!X urxvt) InfoStoreAdd terminal xterm
+
 # Options
+ImagePath $[FVWM_USERDIR]/icons
 DesktopSize 1x1
 DesktopName 0 Desk 1
 DesktopName 1 Desk 2
@@ -17,15 +26,6 @@ IgnoreModifiers L25
 HideGeometryWindow always
 OpaqueMoveSize unlimited
 DefaultLayers 2 4 4
-ImagePath $[FVWM_USERDIR]/icons
-InfoStoreAdd font 'Shadow=1:xft:Sans:size=10'
-InfoStoreAdd titlefont 'Shadow=1:xft:Sans:size=10:bold'
-InfoStoreAdd tray stalonetray
-InfoStoreAdd traycommand 'stalonetray -bg "#333333" --geometry 2x2 --max-geometry 2x2 --scrollbars horizontal --scrollbars-size 3 --dockapp-mode simple --kludges force_icons_size'
-#InfoStoreAdd tray wmsystemtray
-#InfoStoreAdd traycommand 'wmsystemtray --non-wmaker'
-Test (X urxvt) InfoStoreAdd terminal urxvt
-Test (!X urxvt) InfoStoreAdd terminal xterm
 
 # Titles and borders
 Style * FvwmBorder
@@ -283,7 +283,6 @@ Mouse 1		R	A	Nop				#Desktop left click
 Mouse 3		R	A	Menu RootMenu mouse 0p 0p	#Desktop right click
 Key D		A	CM	ShowDesktop			#Ctrl+Alt+D
 Key Space	A	4	Menu WindowMenu			#Super+Space
-Key Escape	A	4	Menu RootMenu			#Super+Escape
 Key Page_Up	A	4	SwitchDesk -1 0 3		#Super+PgUp
 Key Page_Down	A	4	SwitchDesk 1 0 3		#Super+PgDown
 Key F1		A	4	SwitchDesk 0 0			#Super+F1
@@ -321,11 +320,10 @@ Test (X dmenu_run_history) Key F2 A M Exec exec dmenu_run_history -f -nb gray20 
 Test (!X dmenu_run_history) Key F2 A M Exec exec dmenu_run -f -nb gray20 -sb gray5 -nf gray90 -sf white -fn -12
 Key T		A	4	Exec exec transset -at 0.75	#Super+T
 Key X		A	CM	Exec exec xkill			#Ctrl+Alt+X
-Key L		A	CM	Exec exec xtrlock -b		#Ctrl+Alt+L
-Key Print	A	S	Exec exec scrot -p		#Shift+Print
-Key Print	A	C	Exec exec scrot -s		#Ctrl+Print
-Key Print	A	4	Exec exec scrot -p -b -u	#Super+Print
+Key L		A	CM	Exec exec xtrlock		#Ctrl+Alt+L
 Key Escape A C Exec exec $[infostore.terminal] -e htop		#Ctrl+Escape
+Key Print A S Exec exec maim -d 1 ~/screenshot_$(date +%b%d_%H:%M:%S).png #Shift+Print
+Key Print A C Exec exec maim -s ~/screenshot_select_$(date +%b%d_%H:%M:%S).png #Ctrl+Print
 # Volume control (media keys)
 Test (X vol.sh) Key XF86AudioRaiseVolume A A Exec exec vol.sh up
 Test (X vol.sh) Key XF86AudioLowerVolume A A Exec exec vol.sh down
@@ -375,8 +373,8 @@ AddtoMenu Layer
 AddToMenu RootMenu "FVWM $[version.num]" Title
 Test (X dmenu_run_history) + "&1 Run" Exec exec dmenu_run_history -f -nb gray20 -sb gray5 -nf gray90 -sf white -fn -12
 Test (!X dmenu_run_history) + "&1 Run" Exec exec dmenu_run -f -nb gray20 -sb gray5 -nf gray90 -sf white -fn -12
-Test (X xkill) + "&2 Destroy" Exec exec xkill
-+ "&3 Identify" Exec exec FvwmCommand FvwmIdent
++ "&2 Destroy" Destroy
++ "&3 Identify" FvwmIdent
 + "" Nop
 + "&4 Terminal" Exec exec $[infostore.terminal]
 + "&5 Files" Exec exec xdg-open $[HOME]
@@ -407,4 +405,3 @@ Style TelegramDesktop !Title, !Icon, WindowListSkip, Sticky, PositionPlacement 0
 Style FvwmIdent WindowListSkip, NeverFocus, !Title
 Style FvwmButtons !Maximizable, !Iconifiable, !Title, !Borders, Sticky, NeverFocus, WindowListSkip, CirculateSkip, FixedSize, FixedPosition, !Closable
 Style FvwmScript !Button 3, !Button 5, PositionPlacement Center, FixedSize, FixedPosition, !Iconifiable, !Maximizable, Layer 6
-
