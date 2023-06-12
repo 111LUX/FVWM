@@ -1,5 +1,5 @@
 ## Solid FVWM configuration
-![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/333333.png)
+![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/333.png)
 
 **GREETINGS & CONGRATULATIONS**  
 You've navigated to page, where advanced, original and great FVWM configuration may be downloaded.  
