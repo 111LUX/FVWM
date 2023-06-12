@@ -6,7 +6,7 @@ You've navigated to page, where advanced, original and great FVWM configuration 
 Why is it great?  
 1. It is modern and ready to use, so even users of modern desktop environments won't be missing something. It's containing functionality from modern window managers (including its focus policy) and some unique features. Moreover, it's superior by its usability, stability and speed.  
 2. It is lightweight and simple by design, so easily customizable. The whole configuration includes one "icons" directory and three files: "autostart" (sh script with startup applications), "config" (FVWM configuration file) and "exit" (FvwmScript exit dialog). Also, with its relevant and advanced functions, it'll be a great start for new FVWM users as well.  
-3. It is great by its appearance, light, integrated look and is theme independent. Initially it was intended to use with Vertex GTK theme (as it was posted on couple of forums couple of years ago, e.g fvwmforums.org), but now it's compatible with every bright or dark Qt/GTK theme you want (I'm using it with numix-gtk-theme now, which is available in most of repositories). Also, no additional images are used in menus or window decorations, straight solid FVWM native decor.  
+3. It is great by its appearance, light, integrated look and is theme independent. Initially it was intended to use with Vertex GTK theme (as it was posted on couple of forums couple of years ago), but now it's compatible with every bright or dark Qt/GTK theme you want (I'm using it with numix-gtk-theme now, which is available in most of repositories). Also, no additional images are used in menus or window decorations, straight solid FVWM native decor.  
 
 **Compatible with everything, where FVWM2 may be installed.**
 Personally, I recommend to use Devuan (devuan.org) and OpenBSD (openbsd.org), depending on your hardware and use case. Should work with all not too old FVWM2 versions (tested with 2.6+), and also with current FVWM3 version as well (which is still under active development, so should be used more by enthusiasts). I'm using it with FVWM 2.7.0, which was released in the end of 2022 year.  
@@ -28,19 +28,19 @@ $ mv ~/FVWM ~/.fvwm
 ```
 # apt install xcompmgr stalonetray suckless-tools dzen2
 ```
-* dzen2 is an optional dependency, but with this package installed, you'll get nice top screen notifications with current Desk number, when switching it with Super+F1/F2/F3/F4 (to move window to certain Desk use Super+1/2/3/4) or Super+PgUp/PgDown. Also, it may be used to display sound volume notifications too, when changing it with your keyboard/laptop multimedia hotkeys (read bellow).  
+* _dzen2_ is an optional dependency, but with this package installed, you'll get nice top screen notifications with current Desk number, when switching it with Super+F1/F2/F3/F4 (to move window to certain Desk use Super+1/2/3/4) or Super+PgUp/PgDown. Also, it may be used to display sound volume notifications too, when changing it with your keyboard/laptop multimedia hotkeys (read bellow).  
 ![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/dzen.png)  
 
-* dmenu launcher from "suckless-tools" package will be required, in certain repositories it's packaged simply as `dmenu`. For a command history support, additionally download [dmenu_run_history](https://tools.suckless.org/dmenu/scripts/dmenu_run_with_command_history/) script and save it to your _$PATH_ as executable (e.g `# cp dmenu_run_history /usr/local/bin/` and `# chmod +x /usr/local/bin/dmenu_run_history`), then configuration file will use it instead of a regular dmenu as a launcher (Alt+F2).  
+* _dmenu_ launcher from "suckless-tools" package will be required, in certain repositories it's packaged simply as `dmenu`. For a command history support, additionally download [dmenu_run_history](https://tools.suckless.org/dmenu/scripts/dmenu_run_with_command_history/) script and save it to your _$PATH_ as executable (e.g `# cp dmenu_run_history /usr/local/bin/` and `# chmod +x /usr/local/bin/dmenu_run_history`), then configuration file will use it instead of a regular dmenu as a launcher (Alt+F2).  
 ![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/dmenu_run.png)  
 
-* stalonetray is used as a tray application. FvwmButtons module launchs it at bottom left screen corner before icons. Alternatively, it is possible to replace `stalonetray` with `wmsystemtray` package (read bellow).
+* _stalonetray_ is used as a tray application. FvwmButtons module is launching it at bottom left screen corner before icons. Alternatively, it is possible to replace `stalonetray` with `wmsystemtray` package (read bellow).  
 ![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/dock.png)  
 
-* xcompmgr composition manager configured pretty well via its command line options in configuration file, also it's using server-side shadows — -s flag, which is not commonly used. It fits nicely with overall design, look and feel.  
+* _xcompmgr_ compositing manager configured pretty well via its command line options in configuration file, also it's using server-side shadows — -s flag, which is not commonly used. It fits nicely with overall design, look and feel.  
 ![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/screenshot.png)  
 
-Few useful additional applications with short description (like fbxkb - tray keyboard layout indicator) are commented in ~/.fvwm/autostart file, install it and uncomment if required. "Files" root menu entry will open your home dir with your default file manager (via xdg-open), I prefer caja (and engrampa as archive manager), but for file operations I'm using drop down terminal mostly.
+Few useful additional applications with short description (like fbxkb - tray keyboard layout indicator) are commented in ~/.fvwm/autostart file, install it and uncomment if required. "Files" root menu entry will open your home dir with your default file manager (via xdg-open), I prefer caja (and engrampa as archive manager), but for file operations I'm using drop down terminal mostly.  
 
 **4.** Launch or restart FVWM.  
 
@@ -53,27 +53,29 @@ Few useful additional applications with short description (like fbxkb - tray key
 ---
 
 ### Xft configuration  
-To make Xft fonts similar in size among all applications, to enable its hinting (in modern DEs this part is automatically handled by "settings-daemons"), Xft configuration should be added to ~/.Xresources file. [Download my .Xresources](https://raw.githubusercontent.com/111LUX/777/main/.Xresources) and save it to your _$HOME_, while it will be enough to add "Xft" lines, my urxvt and xterm settings are pretty usable too. To apply it, `$ xrdb -merge ~/.Xresources` should be executed, no need to add this command to ~/.fvwm/autostart file, as it is already there.
+To make Xft fonts similar in size among all applications, to enable its hinting (in modern DEs this part is automatically handled by "settings-daemons"), Xft configuration should be added to ~/.Xresources file. [Download my .Xresources](https://raw.githubusercontent.com/111LUX/777/main/.Xresources) and save it to your _$HOME_, while it will be enough to add "Xft" lines, my urxvt and xterm settings are pretty usable too. To apply it, `$ xrdb -merge ~/.Xresources` should be executed, no need to add this command to ~/.fvwm/autostart file, as it is already there.  
 
 ---
 
-### Keybindings
+### Keybindings  
 To iconify (minimize) all applications/restore — ShowDesktop function should be used,  
-it is available via Ctrl+Alt+D, or when pressing dock tray borders (screen bottom left corner click).
-![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/showdesktopbutton.gif)
+it is available via Ctrl+Alt+D, or when pressing dock tray borders (screen bottom left corner click).  
+![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/showdesktop.gif)  
 
 Icon middle click will close iconified application, window title middle click will maximize/unmaximize window, close title button middle click will kill application. Some other common keybindings: Super+Q - close, Super+A - iconify, Super+C - deiconify previous, Super+W - maximize, Super+D - lower/raise window. Alt+Tab is working as expected, Super+Tab/Super+Shift+Tab - raise and focus next/prev window. All keybindings may be found under "Keybindings" section of ~/.fvwm/config .  
 
-To enable **dzen2 sound volume notifications**, when using sound media keys, [download vol.sh script](https://raw.githubusercontent.com/111LUX/777/main/vol.sh), save "vol.sh" to your _$PATH_ as executable and restart FVWM.  No further configuration required, as these lines are already present in ~/.fvwm/config :
+To enable **dzen2 sound volume notifications**, when using sound media keys, [download vol.sh script](https://raw.githubusercontent.com/111LUX/777/main/vol.sh), save "vol.sh" to your _$PATH_ as executable and restart FVWM.  No further configuration required, as these lines are already present in ~/.fvwm/config :  
 ```
 Test (X vol.sh) Key XF86AudioRaiseVolume A A Exec exec vol.sh up
 Test (X vol.sh) Key XF86AudioLowerVolume A A Exec exec vol.sh down
-```
+```  
+![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/pulsevol.png)  
+Script uses ALSA backend to change volume, to use PulseAudio instead, download [download vol.sh_pulse](https://raw.githubusercontent.com/111LUX/777/main/vol.sh_pulse) and save it as "vol.sh" to your _$PATH_ as executable, it uses `pulsemixer` package to get sound volume, so it is required (on some systems it should be replaced with `pamixer`).  
 
 ---
 
 ### Local variables  
-Several local FVWM variables are set at top of config file. Such variables store information about **default FVWM font**, **title font**, **tray application** and **terminal emulator** (only xterm or urxvt are supported, as it's supporting "-name" flag required for DropDown function to work), which is used as drop down terminal and to launch `htop` with Ctrl+Escape hotkey. With changing these variables, it will be changed in whole config.  
+Several local FVWM variables are set at top of config file. Such variables store information about **default FVWM font**, **title font**, **tray application** and **terminal emulator** (only xterm or urxvt are supported, as it's supporting "-name" flag, required for DropDown function to work with terminal). When changing these variables, it will be changed in whole config.  
 ```
 # Store information in local variables
 InfoStoreAdd font 'Shadow=1:xft:Sans:size=10'
@@ -83,16 +85,22 @@ InfoStoreAdd traycommand 'stalonetray -bg "#333333" --geometry 2x2 --max-geometr
 Test (X urxvt) InfoStoreAdd terminal urxvt
 Test (!X urxvt) InfoStoreAdd terminal xterm
 ```
+
 "tray" and "traycommand" variables are setting tray application. By default stalonetray will be launched automatically with FVWM, and when any tray application will be started (like telegram-desktop), its icon will appear in bottom left corner.  
-![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/wmsystemtray1.png)  
+![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/wmsystemtray.png)  
 Also, it is possible to **replace stalonetray with wmsystemtray tray application**,  
-just replace "InfoStoreAdd tray" and "traycommand" lines:
+just replace "InfoStoreAdd tray" and "InfoStoreAdd traycommand" lines,  
+kill stalonetray `$ pkill stalonetray` and restart FVWM.  
 ```
 InfoStoreAdd tray wmsystemtray
 InfoStoreAdd traycommand 'wmsystemtray --non-wmaker'
 ```
-Then kill runing stalonetray `$ pkill stalonetray` and restart FVWM.  
-
+   
+**To change FVWM fonts**, replace "font" and "titlefont" variables with fonts of your choice, for example:  
+```
+InfoStoreAdd font 'Shadow=1:xft:Liberation Sans:size=10'
+InfoStoreAdd titlefont 'Shadow=1:xft:Liberation Sans:size=11:bold'
+```
 ---
  
 ### Time and date  
