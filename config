@@ -236,14 +236,14 @@ AddToFunc CloseAction
 AddToFunc DeiconifyAction
 	+ I All (CurrentDesk, Iconic) PlaceAgain Icon
 	# FvwmEvent part of ShowDesktop function
-	+ I All (CurrentDesk) State 9 false
+	+ I All (CurrentDesk, Iconifiable) State 9 false
 *FvwmEvent: deiconify DeiconifyAction
 # Set correct initial DropDown applications size and position
 AddToFunc NewWindowAction
 	+ I ThisWindow (DropDownTerm) ResizeMove 100 60 0 0
 	+ I ThisWindow (TelegramDesktop, !Media\ viewer) ResizeMove 555p 91 0 0
 	# FvwmEvent part of ShowDesktop function
-	+ I All (CurrentDesk) State 9 false
+	+ I All (CurrentDesk, Iconifiable) State 9 false
 *FvwmEvent: add_window NewWindowAction
 # DropDown function
 AddToFunc DropDown
