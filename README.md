@@ -34,7 +34,7 @@ $ mv ~/FVWM ~/.fvwm
 * dmenu launcher from "suckless-tools" package will be required, in certain repositories it's packaged simply as `dmenu`. For a command history support, additionally download [dmenu_run_history](https://tools.suckless.org/dmenu/scripts/dmenu_run_with_command_history/) script and save it to your _$PATH_ as executable (e.g `# cp dmenu_run_history /usr/local/bin/` and `# chmod +x /usr/local/bin/dmenu_run_history`), then configuration file will use it instead of a regular dmenu as a launcher (Alt+F2).  
 ![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/dmenu_run.png)  
 
-* stalonetray is used as a tray application and launched via FvwmButtons module at bottom left screen corner before icons. Alternatively, it is possible to replace `stalonetray` with `wmsystemtray` package (read bellow).
+* stalonetray is used as a tray application. FvwmButtons module launchs it at bottom left screen corner before icons. Alternatively, it is possible to replace `stalonetray` with `wmsystemtray` package (read bellow).
 ![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/dock.png)  
 
 * xcompmgr composition manager configured pretty well via its command line options in configuration file, also it's using server-side shadows — -s flag, which is not commonly used. It fits nicely with overall design, look and feel.  
