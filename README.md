@@ -15,7 +15,7 @@ Personally, I recommend to use Devuan (devuan.org) and OpenBSD (openbsd.org), de
 
 ### INSTALLATION  
   
-**1.** Install `fvwm` package, then navigate to your home dir and fetch the configuration
+**1.** Install the `fvwm` package, then navigate to your home dir and fetch the configuration
 ```
 $ git clone https://github.com/111LUX/FVWM.git
 ```
@@ -73,7 +73,7 @@ Test (X vol.sh) Key XF86AudioLowerVolume A A Exec exec vol.sh down
 ---
 
 ### Local variables  
-Several local FVWM variables are set at top of config file. Such variables store information about **default FVWM font**, **title font**, **tray application** and **terminal emulator** (only xterm or urxvt are supported, as it's supporting "-name" flag required for DropDown function to work) used as drop down terminal and to launch `htop` with Ctrl+Escape hotkey). With changing these variables, it will be changed in whole config.  
+Several local FVWM variables are set at top of config file. Such variables store information about **default FVWM font**, **title font**, **tray application** and **terminal emulator** (only xterm or urxvt are supported, as it's supporting "-name" flag required for DropDown function to work), which is used as drop down terminal and to launch `htop` with Ctrl+Escape hotkey. With changing these variables, it will be changed in whole config.  
 ```
 # Store information in local variables
 InfoStoreAdd font 'Shadow=1:xft:Sans:size=10'
