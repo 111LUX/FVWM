@@ -53,14 +53,14 @@ Few useful additional applications with short description (like fbxkb - tray key
 ---
 
 ### Xft configuration  
-To make Xft fonts similar in size among all applications, to enable its hinting (in modern DEs this part is automatically handled by "settings-daemons"), xft configuration should be added to ~/.Xresources file. [Download my .Xresources](https://raw.githubusercontent.com/111LUX/777/main/.Xresources) and save it to your _$HOME_, while it will be enough to add "Xft" lines, my urxvt and xterm settings are pretty usable too. To apply it, `$ xrdb -merge ~/.Xresources` should be executed, no need to add this command to ~/.fvwm/autostart file, as it is already there.
+To make Xft fonts similar in size among all applications, to enable its hinting (in modern DEs this part is automatically handled by "settings-daemons"), Xft configuration should be added to ~/.Xresources file. [Download my .Xresources](https://raw.githubusercontent.com/111LUX/777/main/.Xresources) and save it to your _$HOME_, while it will be enough to add "Xft" lines, my urxvt and xterm settings are pretty usable too. To apply it, `$ xrdb -merge ~/.Xresources` should be executed, no need to add this command to ~/.fvwm/autostart file, as it is already there.
 
 ---
 
 ### Keybindings
 To iconify (minimize) all applications/restore — ShowDesktop function should be used,  
 it is available via Ctrl+Alt+D, or when pressing dock tray borders (screen bottom left corner click).
-![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/ShowDesktop.gif)
+![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/showdesktopbutton.gif)
 
 Icon middle click will close iconified application, window title middle click will maximize/unmaximize window, close title button middle click will kill application. Some other common keybindings: Super+Q - close, Super+A - iconify, Super+C - deiconify previous, Super+W - maximize, Super+D - lower/raise window. Alt+Tab is working as expected, Super+Tab/Super+Shift+Tab - raise and focus next/prev window. All keybindings may be found under "Keybindings" section of ~/.fvwm/config .  
 
@@ -84,8 +84,7 @@ Test (X urxvt) InfoStoreAdd terminal urxvt
 Test (!X urxvt) InfoStoreAdd terminal xterm
 ```
 "tray" and "traycommand" variables are setting tray application. By default stalonetray will be launched automatically with FVWM, and when any tray application will be started (like telegram-desktop), its icon will appear in bottom left corner.  
-
-![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/wmsystemtray.png)  
+![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/wmsystemtray1.png)  
 Also, it is possible to **replace stalonetray with wmsystemtray tray application**,  
 just replace "InfoStoreAdd tray" and "traycommand" lines:
 ```
