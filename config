@@ -370,7 +370,7 @@ AddtoMenu Layer
 + "&1 on Top" Layer 0 6
 + "&2 Lower" Layer 0 4
 
-AddToMenu RootMenu "FVWM $[version.num]" Title
+AddToMenu RootMenu "Universe" Title
 Test (X dmenu_run_history) + "&1 Run" Exec exec dmenu_run_history -f -nb gray5 -sb gray20 -nf silver -sf white -fn -12 -p \$
 Test (!X dmenu_run_history) + "&1 Run" Exec exec dmenu_run -f -nb gray5 -sb gray20 -nf silver -sf white -fn -12 -p \$
 + "&2 Destroy" Destroy
