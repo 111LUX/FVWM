@@ -5,7 +5,7 @@ xcompmgr -fFs -I .06 -O .6 -D 6 &
 #conky -q -c ~/.conkyrc.clock &
 
 # Set background
-fvwm-root -r ~/.fvwm/icons/rootbg.png
+fvwm-root -r ~/.fvwm/icons/rootbg.png || fvwm3-root -r ~/.fvwm/icons/rootbg.png
 
 # For jpeg backgrounds
 #hsetroot -fill ~/.Wallpaper.jpg
