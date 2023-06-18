@@ -316,8 +316,8 @@ Mouse 2		MT	A	-
 Key BackSpace	M	A	MenuLeaveSubmenu
 Key F1		R	A	-
 # Alt+F2
-Test (X dmenu_run_history) Key F2 A M Exec exec dmenu_run_history -f -nb gray20 -sb gray5 -nf gray90 -sf white -fn -12
-Test (!X dmenu_run_history) Key F2 A M Exec exec dmenu_run -f -nb gray20 -sb gray5 -nf gray90 -sf white -fn -12
+Test (X dmenu_run_history) Key F2 A M Exec exec dmenu_run_history -f -nb gray5 -sb gray20 -nf silver -sf white -fn -12 -p \$
+Test (!X dmenu_run_history) Key F2 A M Exec exec dmenu_run -f -nb gray5 -sb gray20 -nf silver -sf white -fn -12 -p \$
 Key T		A	4	Exec exec transset -at 0.75	#Super+T
 Key X		A	CM	Exec exec xkill			#Ctrl+Alt+X
 Key L		A	CM	Exec exec xtrlock		#Ctrl+Alt+L
@@ -371,8 +371,8 @@ AddtoMenu Layer
 + "&2 Lower" Layer 0 4
 
 AddToMenu RootMenu "FVWM $[version.num]" Title
-Test (X dmenu_run_history) + "&1 Run" Exec exec dmenu_run_history -f -nb gray20 -sb gray5 -nf gray90 -sf white -fn -12
-Test (!X dmenu_run_history) + "&1 Run" Exec exec dmenu_run -f -nb gray20 -sb gray5 -nf gray90 -sf white -fn -12
+Test (X dmenu_run_history) + "&1 Run" Exec exec dmenu_run_history -f -nb gray5 -sb gray20 -nf silver -sf white -fn -12 -p \$
+Test (!X dmenu_run_history) + "&1 Run" Exec exec dmenu_run -f -nb gray5 -sb gray20 -nf silver -sf white -fn -12 -p \$
 + "&2 Destroy" Destroy
 + "&3 Identify" FvwmIdent
 + "" Nop
