@@ -6,7 +6,7 @@ You've navigated to page, where advanced, original and great FVWM configuration 
 Why is it great?  
 1. It is modern and ready to use, so even users of modern desktop environments won't be missing something. It's containing functionality from modern window managers (including its focus policy) and some unique features. Moreover, it's superior by its usability, stability and speed.  
 2. It is lightweight and simple by design, so easily customizable. The whole configuration includes one "icons" directory and three files: "autostart" (sh script with startup applications), "config" (FVWM configuration file) and "exit" (FvwmScript exit dialog). Also, with its relevant and advanced functions, it'll be a great start for new FVWM users as well.  
-3. It is great by its appearance, light, integrated look and is theme independent. Initially it was intended to use with Vertex GTK theme (as it was posted on couple of forums couple of years ago), but now it's compatible with every bright or dark Qt/GTK theme you want (I'm using it with numix-gtk-theme now, which is available in most of repositories). Also, no additional images are used in menus or window decorations, straight solid FVWM native decor.  
+3. It is great by its appearance, light, integrated look and is theme independent. Initially it was intended to use with Vertex GTK theme (as it was posted on couple of forums couple of years ago), but now it's compatible with every bright or dark Qt/GTK theme you want (I'm using it with numix-gtk-theme now, which is available in most of repositories).
 
 **Compatible with everything, where FVWM2 may be installed.**
 Personally, I recommend to use Devuan (devuan.org) and OpenBSD (openbsd.org), depending on your hardware and use case. Should work with all not too old FVWM2 versions (tested with 2.6+), and also with current FVWM3 version as well (which is still under active development, so should be used more by enthusiasts). I'm using it with FVWM 2.7.0, which was released in the end of 2022 year.  
@@ -102,7 +102,15 @@ InfoStoreAdd font 'Shadow=1:xft:Liberation Sans:size=10'
 InfoStoreAdd titlefont 'Shadow=1:xft:Liberation Sans:size=11:bold'
 ```
 ---
- 
+
 ### Time and date  
 ![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/0707time.png)  
 To view current time and date in bottom right corner of root window, install `conky`, [download .conkyrc.clock file](https://raw.githubusercontent.com/111LUX/777/main/.conkyrc.clock) and save it as ~/.conkyrc.clock . Uncomment `conky -q -c ~/.conkyrc.clock &` line in ~/.fvwm/autostart and it will be automatically started on FVWM startup.
+
+---
+
+### Title buttons
+![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/titlebuttons.png)  
+Nice title buttons, which are used in the config, are tacken from [a23d.co](https://www.a23d.co) textures resource:  
+https://www.a23d.co/product-category/textures/glass/mirror/  
+The permission to use these title buttons in my work is granted by the A23D Team.
