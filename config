@@ -37,10 +37,9 @@ Style * SnapAttraction 6 All ScreenAll
 Style * CascadePlacement
 Style * EWMHUseStackingOrderHints
 Style * DecorateTransient
-Style * MinWindowSize 64p 64p
 Style * ResizeOpaque
 Style * MwmDecor
-# Icon
+# Icons
 Style * StickyIcon
 Style * Icon window64.png
 Style * MiniIcon window16.png
@@ -80,17 +79,16 @@ MenuStyle * TitleFont '$[infostore.font]:bold'
 MenuStyle * ItemFormat '%.12|%.1<%i%i%6l%21|'
 
 # Titlebar and borders
-TitleStyle Centered Height 24
+TitleStyle Centered Height 26
 TitleStyle ActiveUp -- Flat
 TitleStyle ActiveDown -- Flat
 TitleStyle Inactive -- Flat
 BorderStyle Inactive -- HiddenHandles NoInset
 BorderStyle Active -- HiddenHandles NoInset
 # Titlebar buttons
-ButtonStyle 1 Vector 5 25x40@1 25x60@1 75x60@0 75x40@0 25x40@1 -- Flat
-ButtonStyle 3 Vector 5 40x40@1 60x40@1 60x60@0 40x60@0 40x40@1 -- Flat
-ButtonStyle 5 Vector 5 25x25@1 25x75@1 75x75@0 75x25@0 25x25@1 -- Flat
-ButtonStyle All ActiveDown -- !Flat
+ButtonStyle All ActiveUp Pixmap button_focus.png -- Flat
+ButtonStyle All ActiveDown Pixmap button_press.png -- Flat
+ButtonStyle All Inactive Pixmap button_unfocus.png -- Flat
 
 # Colorset <number> background, foreground, foreground shadow
 Colorset 111 bg #111111, fg white, fgsh black
@@ -405,4 +403,3 @@ Style TelegramDesktop !Title, !Icon, WindowListSkip, Sticky, PositionPlacement 0
 Style FvwmIdent WindowListSkip, NeverFocus, !Title
 Style FvwmButtons !Maximizable, !Iconifiable, !Title, !Borders, Sticky, NeverFocus, WindowListSkip, CirculateSkip, FixedSize, FixedPosition, !Closable
 Style FvwmScript !Button 3, !Button 5, PositionPlacement Center, FixedSize, FixedPosition, !Iconifiable, !Maximizable, Layer 6
-
