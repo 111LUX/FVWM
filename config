@@ -27,12 +27,16 @@ HideGeometryWindow always
 OpaqueMoveSize unlimited
 DefaultLayers 2 4 4
 
-# Titles and borders
-Style * FvwmBorder
-Style * !StippledTitle
-Style * Font '$[infostore.titlefont]'
-Style * BorderWidth 3, HandleWidth 3
-Style * SnapAttraction 6 All ScreenAll
+# Default cursors
+CursorStyle ROOT left_ptr
+CursorStyle TITLE left_ptr
+CursorStyle DEFAULT left_ptr
+CursorStyle MENU left_ptr
+CursorStyle SYS left_ptr
+CursorStyle RESIZE sizing
+CursorStyle MOVE fleur
+CursorStyle WAIT watch
+
 # Windows
 Style * CascadePlacement
 Style * EWMHUseStackingOrderHints
@@ -49,16 +53,35 @@ Style * FPFocusClickButtons 1
 Style * FPSortWindowlistByFocus
 Style * FPIgnoreRaiseClickMotion
 Style * !FPReleaseFocus
+# Titlebar and borders
+Style * FvwmBorder
+Style * !StippledTitle
+Style * Font '$[infostore.titlefont]'
+Style * BorderWidth 3, HandleWidth 3
+Style * SnapAttraction 6 All ScreenAll
+TitleStyle Centered Height 26
+TitleStyle ActiveUp -- Flat
+TitleStyle ActiveDown -- Flat
+TitleStyle Inactive -- Flat
+BorderStyle Inactive -- HiddenHandles NoInset
+BorderStyle Active -- HiddenHandles NoInset
+# Vector title buttons
+#ButtonStyle 1 Vector 5 25x40@1 25x60@1 75x60@0 75x40@0 25x40@1 -- Flat
+#ButtonStyle 3 Vector 5 40x40@1 60x40@1 60x60@0 40x60@0 40x40@1 -- Flat
+#ButtonStyle 5 Vector 5 25x25@1 25x75@1 75x75@0 75x25@0 25x25@1 -- Flat
+#ButtonStyle All ActiveDown -- !Flat
 
-# Default cursors
-CursorStyle ROOT left_ptr
-CursorStyle TITLE left_ptr
-CursorStyle DEFAULT left_ptr
-CursorStyle MENU left_ptr
-CursorStyle SYS left_ptr
-CursorStyle RESIZE sizing
-CursorStyle MOVE fleur
-CursorStyle WAIT watch
+# Vertex title buttons
+ButtonStyle All ActiveUp Pixmap v_button_focus.png -- Flat
+ButtonStyle All Inactive Pixmap v_button_unfocus.png -- Flat
+ButtonStyle 1 ActiveDown Pixmap v_button_close.png -- Flat
+ButtonStyle 3 ActiveDown Pixmap v_button_iconify.png -- Flat
+ButtonStyle 5 ActiveDown Pixmap v_button_maximize.png -- Flat
+
+# Mirror title buttons
+#ButtonStyle All ActiveUp Pixmap m_button_focus.png -- Flat
+#ButtonStyle All ActiveDown Pixmap m_button_press.png -- Flat
+#ButtonStyle All Inactive Pixmap m_button_unfocus.png -- Flat
 
 # Menu appearance
 MenuStyle * Fvwm
@@ -77,18 +100,6 @@ MenuStyle * HilightBack
 MenuStyle * Font '$[infostore.font]'
 MenuStyle * TitleFont '$[infostore.font]:bold'
 MenuStyle * ItemFormat '%.12|%.1<%i%i%6l%21|'
-
-# Titlebar and borders
-TitleStyle Centered Height 26
-TitleStyle ActiveUp -- Flat
-TitleStyle ActiveDown -- Flat
-TitleStyle Inactive -- Flat
-BorderStyle Inactive -- HiddenHandles NoInset
-BorderStyle Active -- HiddenHandles NoInset
-# Titlebar buttons
-ButtonStyle All ActiveUp Pixmap button_focus.png -- Flat
-ButtonStyle All ActiveDown Pixmap button_press.png -- Flat
-ButtonStyle All Inactive Pixmap button_unfocus.png -- Flat
 
 # Colorset <number> background, foreground, foreground shadow
 Colorset 111 bg #111111, fg white, fgsh black
@@ -136,8 +147,7 @@ AddToFunc StartFunction
 	+ I Module FvwmButtons
 	+ I Module FvwmEvent
 	+ I Test (Version 2.*.*) Module FvwmCommandS
-AddToFunc RestartFunction
-	+ I Exec exec sh -c 'pkill -nx xcompmgr; sleep 1; xcompmgr -fFs -I .06 -O .6 -D 6'
+#AddToFunc RestartFunction
 #	+ I Test (F $[HOME]/.Xmodmap) Exec exec xmodmap $[HOME]/.Xmodmap
 # Titlebar buttons click actions
 AddToFunc CloseButton
