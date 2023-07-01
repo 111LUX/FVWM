@@ -109,8 +109,34 @@ To view current time and date in bottom right corner of root window, install `co
 
 ---
 
-### Title buttons
-![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/titlebuttons.png)  
-Nice title buttons, which are used in the config, are tacken from [a23d.co](https://www.a23d.co) textures resource:  
-https://www.a23d.co/product-category/textures/glass/mirror/  
-The permission to use these title buttons in my work is granted by the A23D Team.
+### Title buttons  
+It's possible to use 3 types of title buttons:  
+1. Vector buttons, using FVWM "Vector" "ButtonStyle".
+2. Title buttons from [Vertex GTK theme](https://github.com/horst3180/vertex-theme).
+3. Title buttons from A23D textures resource [a23d.co - glass/mirror](https://www.a23d.co/product-category/textures/glass/mirror/) (their permission to use it in this config is granted).  
+
+To choose it, comment and uncomment appropriate "title buttons" section in the config:
+```
+# Vector title buttons
+#ButtonStyle 1 Vector 5 25x40@1 25x60@1 75x60@0 75x40@0 25x40@1 -- Flat
+#ButtonStyle 3 Vector 5 40x40@1 60x40@1 60x60@0 40x60@0 40x40@1 -- Flat
+#ButtonStyle 5 Vector 5 25x25@1 25x75@1 75x75@0 75x25@0 25x25@1 -- Flat
+#ButtonStyle All ActiveDown -- !Flat
+
+# Vertex title buttons
+ButtonStyle All ActiveUp Pixmap v_button_focus.png -- Flat
+ButtonStyle All Inactive Pixmap v_button_unfocus.png -- Flat
+ButtonStyle 1 ActiveDown Pixmap v_button_close.png -- Flat
+ButtonStyle 3 ActiveDown Pixmap v_button_iconify.png -- Flat
+ButtonStyle 5 ActiveDown Pixmap v_button_maximize.png -- Flat
+
+# Mirror title buttons
+#ButtonStyle All ActiveUp Pixmap m_button_focus.png -- Flat
+#ButtonStyle All ActiveDown Pixmap m_button_press.png -- Flat
+#ButtonStyle All Inactive Pixmap m_button_unfocus.png -- Flat
+```
+![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/titlebuttons1.png)  
+
+![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/titlebuttons2.png)  
+
+![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/titlebuttons.png)
