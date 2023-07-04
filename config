@@ -146,7 +146,8 @@ AddToFunc StartFunction
 	+ I Module FvwmButtons
 	+ I Module FvwmEvent
 	+ I Test (Version 2.*.*) Module FvwmCommandS
-#AddToFunc RestartFunction
+AddToFunc RestartFunction
+	+ I Exec exec sh -c 'pkill -nx xcompmgr; sleep 1; xcompmgr -fFs -I .06 -O .6 -D 6'
 #	+ I Test (F $[HOME]/.Xmodmap) Exec exec xmodmap $[HOME]/.Xmodmap
 # Titlebar buttons click actions
 AddToFunc CloseButton
