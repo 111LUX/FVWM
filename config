@@ -72,8 +72,7 @@ ButtonStyle 5 Vector 5 25x25@1 25x75@1 75x75@0 75x25@0 25x25@1 -- Flat
 ButtonStyle All ActiveDown -- !Flat
 
 # Vertex title buttons
-#ButtonStyle All ActiveUp Pixmap v_button_focus.png -- Flat
-#ButtonStyle All Inactive Pixmap v_button_unfocus.png -- Flat
+#ButtonStyle All ActiveUp Pixmap v_button.png -- Flat
 #ButtonStyle 1 ActiveDown Pixmap v_button_close.png -- Flat
 #ButtonStyle 3 ActiveDown Pixmap v_button_iconify.png -- Flat
 #ButtonStyle 5 ActiveDown Pixmap v_button_maximize.png -- Flat
