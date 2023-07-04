@@ -37,7 +37,7 @@ $ mv ~/FVWM ~/.fvwm
 * _stalonetray_ is used as a tray application. FvwmButtons module is launching it at bottom left screen corner before icons. Alternatively, it is possible to replace `stalonetray` with `wmsystemtray` package (read bellow).  
 ![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/dock.png)  
 
-* _xcompmgr_ compositing manager configured pretty well via its command line options in configuration file, also it's using server-side shadows — -s flag, which is not commonly used. It fits nicely with overall design, look and feel.  
+* _xcompmgr_ compositing manager configured pretty well via its command line options in configuration file, also it's using server-side shadows — -s flag, which is not commonly used. It fits nicely with overall design, look and feel. (Alternatively, use `compton` with this [~/.config/compton.conf](https://raw.githubusercontent.com/111LUX/777/main/compton.conf) and remove "xcompmgr" lines from config/autostart files.)   
 ![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/screenshot.png)  
 
 Few useful additional applications with short description (like fbxkb - tray keyboard layout indicator) are commented in ~/.fvwm/autostart file, install it and uncomment if required. "Files" root menu entry will open your home dir with your default file manager (via xdg-open), I prefer caja (and engrampa as archive manager), but for file operations I'm using drop down terminal mostly.  
@@ -110,7 +110,7 @@ To view current time and date in bottom right corner of root window, install `co
 ---
 
 ### Title buttons  
-It's possible to use 3 types of title buttons:  
+As for example, it's possible to use 3 types of title buttons:  
 1. Vector buttons, using FVWM "Vector" "ButtonStyle".
 2. Title buttons from [Vertex GTK theme](https://github.com/horst3180/vertex-theme).
 3. Title buttons from A23D textures resource [a23d.co - glass/mirror](https://www.a23d.co/product-category/textures/glass/mirror/) (their permission to use it in this config is granted).  
@@ -124,8 +124,7 @@ To choose it, comment and uncomment appropriate "title buttons" section in the c
 #ButtonStyle All ActiveDown -- !Flat
 
 # Vertex title buttons
-ButtonStyle All ActiveUp Pixmap v_button_focus.png -- Flat
-ButtonStyle All Inactive Pixmap v_button_unfocus.png -- Flat
+ButtonStyle All Pixmap v_button.png -- Flat
 ButtonStyle 1 ActiveDown Pixmap v_button_close.png -- Flat
 ButtonStyle 3 ActiveDown Pixmap v_button_iconify.png -- Flat
 ButtonStyle 5 ActiveDown Pixmap v_button_maximize.png -- Flat
@@ -135,6 +134,10 @@ ButtonStyle 5 ActiveDown Pixmap v_button_maximize.png -- Flat
 #ButtonStyle All ActiveDown Pixmap m_button_press.png -- Flat
 #ButtonStyle All Inactive Pixmap m_button_unfocus.png -- Flat
 ```
+Also, it's possible to changle title bar height (in pixels):
+```
+TitleStyle Centered Height 30
+```  
 ![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/titlebuttons1.png)  
 
 ![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/titlebuttons2.png)  
