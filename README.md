@@ -111,7 +111,7 @@ To view current time and date in bottom right corner of root window, install `co
 
 ### Title buttons  
 As for example, it's possible to use 3 types of title buttons:  
-1. Vector buttons, using FVWM "Vector" "ButtonStyle".
+1. Vector buttons, using FVWM "Vector" "ButtonStyle" (default).
 2. Title buttons from [Vertex GTK theme](https://github.com/horst3180/vertex-theme).
 3. Title buttons from A23D textures resource [a23d.co - glass/mirror](https://www.a23d.co/product-category/textures/glass/mirror/) (their permission to use it in this config is granted).  
 
