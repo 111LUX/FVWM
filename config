@@ -203,7 +203,7 @@ AddToFunc MoveToDeskChangeFocus
 # Switch desk and show notification
 AddToFunc SwitchDesk
 	+ I GotoDesk $*
-	+ I Test (X dzen2) Exec exec echo $[desk.name$[desk.n]] | dzen2 -p 1 -bg gray4 -fg white -fn -13:Bold -h 27
+	+ I Test (X dzen2) Exec exec echo $[desk.name$[desk.n]] | dzen2 -p 1 -bg gray4 -fg white -fn -14:Bold -h 30
 # Change WindowList function (Alt+Tab)
 DestroyFunc WindowListFunc
 AddToFunc WindowListFunc
