@@ -48,7 +48,7 @@ Few useful additional applications with short description (like fbxkb - tray key
 
 ### Embedded drop down applications  
 * **Drop down terminal** is available, toggle its visibility with Ctrl+F1 hotkey. No additional actions required, it's working with every screen resolution "out of the box", urxvt terminal emulator will be used if installed, or otherwise xterm. It "remembers" its maximized state even when is hidden (maximize/unmaximize it with Super+W hotkey, or using tiling functionality - Super+Up/Down/Left/Right arrows).  
-* **Drop down telegram client** is added too, press Alt+F1 and it will be displayed on left side of screen. "telegram-desktop" executable will be used in your _$PATH_, so make sure it exists, in most cases an installation of `telegram-desktop` package should be enough. (_This is added not because I'm huge fan of this software, but as I'm using it to communicate with some regular people, and found it useful as drop down app, it may be useful for someone too. If you're not using it, it'll be enough to remove Alt+F1 keybinding in config:_ `Key F1 A M DropDown telegram-desktop...`)  
+* **Drop down telegram client** is added too, press Alt+F1 and it will be displayed on left side of screen. "telegram-desktop" executable will be used in your _$PATH_, so make sure it exists, in most cases an installation of `telegram-desktop` package should be enough. (_This is added not because I'm huge fan of this software or because they pay me, but as I'm using it to communicate with some regular people, and found it useful as drop down app, it may be useful for someone too. If you're not using it, it'll be enough to remove Alt+F1 keybinding in config:_ `Key F1 A M DropDown telegram-desktop...`)  
 
 ---
 
