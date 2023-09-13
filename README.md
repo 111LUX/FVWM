@@ -42,13 +42,11 @@ $ mv ~/FVWM ~/.fvwm
 
 Few useful additional applications with short description (like fbxkb - tray keyboard layout indicator) are commented in ~/.fvwm/autostart file, install it and uncomment if required. "Files" root menu entry will open your home dir with your default file manager (via xdg-open), I prefer caja (and engrampa as archive manager), but for file operations I'm using drop down terminal mostly.  
 
-**4.** Launch or restart FVWM.  
-
 ---
 
 ### Embedded drop down applications  
 * **Drop down terminal** is available, toggle its visibility with Ctrl+F1 hotkey. No additional actions required, it's working with every screen resolution "out of the box", urxvt terminal emulator will be used if installed, or otherwise xterm. It "remembers" its maximized state even when is hidden (maximize/unmaximize it with Super+W hotkey, or using tiling functionality - Super+Up/Down/Left/Right arrows).  
-* **Drop down telegram client** is added too, press Alt+F1 and it will be displayed on left side of screen. "telegram-desktop" executable will be used in your _$PATH_, so make sure it exists, in most cases an installation of `telegram-desktop` package should be enough.  
+* **Drop down telegram client** is added too, press Alt+F1 and it will be displayed on left side of screen. "telegram-desktop" executable will be used in your _$PATH_, so make sure it exists, in most cases an installation of `telegram-desktop` package should be enough. (This is added not because I'm huge fan of this software, but as I'm using it to communicate with some regular people, and found it useful as drop down app, it may be useful for someone too. If you're not using it, it'll be enough to remove Alt+F1 keybinding in config: `Key F1 A M DropDown telegram-desktop...`)  
 
 ---
 
