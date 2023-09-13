@@ -8,8 +8,8 @@ Why is it great?
 2. It is lightweight and simple by design, so easily customizable. The whole configuration includes one "icons" directory and three files: "autostart" (sh script with startup applications), "config" (FVWM configuration file) and "exit" (FvwmScript exit dialog). Also, with its relevant and advanced functions, it'll be a great start for new FVWM users as well.  
 3. It is great by its appearance, light, integrated look and is theme independent. Initially it was intended to use with Vertex GTK theme (as it was posted on couple of forums couple of years ago), but now it's compatible with every bright or dark Qt/GTK theme you want (I'm using it with numix-gtk-theme now, which is available in most of repositories).
 
-**Compatible with everything, where FVWM2 may be installed.**
-Personally, I recommend to use Devuan (devuan.org) and OpenBSD (openbsd.org), depending on your hardware and use case. Should work with all not too old FVWM2 versions (tested with 2.6+), and also with current FVWM3 version as well (which is still under active development, so should be used more by enthusiasts). I'm using it with FVWM 2.7.0, which was released in the end of 2022 year.  
+**Compatible with everything, where FVWM2/3 may be installed.**
+Personally, I recommend to use Devuan (devuan.org) and OpenBSD (openbsd.org), depending on your hardware and use case. Should work with all not too old FVWM2 versions (tested with 2.6+) and also with FVWM3 as well. Right now I'm using it with FVWM 2.7.0.  
 
 ---
 
@@ -41,6 +41,8 @@ $ mv ~/FVWM ~/.fvwm
 ![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/screenshot.png)  
 
 Few useful additional applications with short description (like fbxkb - tray keyboard layout indicator) are commented in ~/.fvwm/autostart file, install it and uncomment if required. "Files" root menu entry will open your home dir with your default file manager (via xdg-open), I prefer caja (and engrampa as archive manager), but for file operations I'm using drop down terminal mostly.  
+
+**4.** Start or restart FVWM.  
 
 ---
 
