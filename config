@@ -7,7 +7,7 @@
 
 # Store information in local variables
 InfoStoreAdd font 'Shadow=1:xft:Sans:size=10'
-InfoStoreAdd titlefont 'Shadow=1:xft:Sans:size=10:bold'
+InfoStoreAdd titlefont 'Shadow=1:xft:Sans:size=11:bold'
 InfoStoreAdd tray stalonetray
 InfoStoreAdd traycommand 'stalonetray -bg "#333333" --geometry 2x2 --max-geometry 2x2 --scrollbars horizontal --scrollbars-size 3 --dockapp-mode simple --kludges force_icons_size'
 Test (X urxvt) InfoStoreAdd terminal urxvt
@@ -107,7 +107,7 @@ Colorset 666 bg #666666, fg #e6e6e6, fgsh black
 # Set colorsets
 Style * HilightColorset 111, IconBackgroundColorset 333, Colorset 666
 Style * HilightBorderColorset 111, BorderColorset 666
-MenuStyle * MenuColorset 333, ActiveColorset 111
+MenuStyle * MenuColorset 333, TitleColorset 333, ActiveColorset 111
 
 #
 # Modules options
@@ -145,7 +145,9 @@ AddToFunc InitFunction
 AddToFunc StartFunction
 	+ I Module FvwmButtons
 	+ I Module FvwmEvent
-	+ I Test (Version 2.*.*) Module FvwmCommandS
+	# To execute fvwm2/3 commands directly via shell
+	#+ I Test (Version 2.*.*) Module FvwmCommandS
+	#+ I Test (!Version 2.*.*) Module FvwmMFL
 AddToFunc RestartFunction
 	+ I Exec exec sh -c 'pkill -nx xcompmgr; sleep 1; xcompmgr -fFs -I .06 -O .6 -D 6'
 #	+ I Test (F $[HOME]/.Xmodmap) Exec exec xmodmap $[HOME]/.Xmodmap
@@ -310,7 +312,7 @@ Key A		A	4	ThisWindow Iconify		#Super+A
 Key W		A	4	ThisWindow Maximize		#Super+W
 Key D		A	4	ThisWindow RaiseLower		#Super+D
 Key C		A	4	UndoIconify			#Super+C
-Key D		A	C4	ToggleWindowDecor		#Ctrl+Super+D
+Key D		A	S4	ToggleWindowDecor		#Shift+Super+D
 Key Tab A S4 Prev (CurrentDesk, !Iconic, !FvwmIdent) RaiseFocus #Super+Tab
 Key Tab A 4 Next (CurrentDesk, !Iconic, !FvwmIdent) RaiseFocus  #Super+Shift+Tab
 # Desktop middle click and Alt+Tab
@@ -326,12 +328,14 @@ Key F1		R	A	-
 # Alt+F2
 Test (X dmenu_run_history) Key F2 A M Exec exec dmenu_run_history -f -nb gray5 -sb gray20 -nf silver -sf white -fn -12 -p \$
 Test (!X dmenu_run_history) Key F2 A M Exec exec dmenu_run -f -nb gray5 -sb gray20 -nf silver -sf white -fn -12 -p \$
-Key T		A	4	Exec exec transset -at 0.75	#Super+T
+Key T		A	4	Exec exec transset -at 0.66	#Super+T
 Key X		A	CM	Exec exec xkill			#Ctrl+Alt+X
 Key L		A	CM	Exec exec xtrlock		#Ctrl+Alt+L
 Key Escape A C Exec exec $[infostore.terminal] -e htop		#Ctrl+Escape
 Key Print A S Exec exec maim -d 1 ~/screenshot_$(date +%b%d_%H:%M:%S).png #Shift+Print
 Key Print A C Exec exec maim -s ~/screenshot_select_$(date +%b%d_%H:%M:%S).png #Ctrl+Print
+Key Print A S4 Exec exec maim | xclip -selection clipboard -t image/png #Shift+Super+Print
+Key Print A C4 Exec exec maim -s | xclip -selection clipboard -t image/png #Ctrl+Super+Print
 # Volume control (media keys)
 Test (X vol.sh) Key XF86AudioRaiseVolume A A Exec exec vol.sh up
 Test (X vol.sh) Key XF86AudioLowerVolume A A Exec exec vol.sh down
@@ -400,7 +404,7 @@ Style conky !Maximizable, !Iconifiable, !Title, FixedSize, Sticky, EWMHIgnoreSta
 Style vim Icon vim64.png, IconOverride, MiniIcon vim16.png, EWMHMiniIconOverride
 Style Gcolor? !Button 5, !Maximizable, Icon colors64.png, MiniIcon colors16.png, NoDecorHint
 Style Chromium MiniIcon chromium16.png, EWMHMiniIconOverride, Icon chromium64.png, IconOverride, !UsePPosition
-Style Gimp MiniIcon gimp16.png, EWMHMiniIconOverride, Icon gimp64.png, IconOverride
+Style Gimp* MiniIcon gimp16.png, EWMHMiniIconOverride, Icon gimp64.png, IconOverride
 Style MuPDF IconOverride, Icon view64.png, EWMHMiniIconOverride, MiniIcon view16.png
 Style qpdfview UseStyle MuPDF
 Style Peek TitleFormat Peek, Sticky, NoDecorHint, Layer 6
