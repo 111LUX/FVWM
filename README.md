@@ -5,8 +5,8 @@
 You've navigated to page, where advanced, original and great FVWM configuration may be downloaded.  
 Why is it great?  
 1. It is modern and ready to use, so even users of modern desktop environments won't be missing something. It's containing functionality from modern window managers (including its focus policy) and some unique features. Moreover, it's superior by its usability, stability and speed.  
-2. It is lightweight and simple by design, so easily customizable. The whole configuration includes one "icons" directory and three files: "autostart" (sh script with startup applications), "config" (FVWM configuration file) and "exit" (FvwmScript exit dialog). Also, with its relevant and advanced functions, it'll be a great start for new FVWM users as well.  
-3. It is great by its appearance, light, integrated look and is theme independent. Initially it was intended to use with Vertex GTK theme (as it was posted on couple of forums couple of years ago), but now it's compatible with every bright or dark Qt/GTK theme you want (I'm using it with numix-gtk-theme now, which is available in most of repositories).
+2. It is lightweight and simple by design, so easily customizable. The whole configuration includes one "icons" directory and three files: "autostart" (sh script with startup applications), "config" (FVWM configuration file) and "exit" (FvwmScript exit dialog). Also, with its relevant and advanced functions, it'll be a great start for a new FVWM user as well.  
+3. It is great by its appearance, light, integrated look and is theme independent. Initially it was intended to use with Vertex GTK theme (as it was posted on couple of forums couple of years ago), but now it's compatible with every bright or dark Qt/GTK theme you want (e.g numix-gtk-theme in package repositories).
 
 **Compatible with everything, where FVWM2/3 may be installed.**
 Personally, I recommend to use Devuan (devuan.org) and OpenBSD (openbsd.org), depending on your hardware and use case. Should work with all not too old FVWM2 versions (tested with 2.6+) and also with FVWM3 as well.  
@@ -48,7 +48,7 @@ Few useful additional applications with short description (like fbxkb - tray key
 
 ### Embedded drop down applications  
 * **Drop down terminal** is available, toggle its visibility with Ctrl+F1 hotkey. No additional actions required, it's working with every screen resolution "out of the box", urxvt terminal emulator will be used if installed, or otherwise xterm. It "remembers" its maximized state even when is hidden (maximize/unmaximize it with Super+W hotkey, or using tiling functionality - Super+Up/Down/Left/Right arrows).  
-* **Drop down telegram client** is added too, press Alt+F1 and it will be displayed on left side of screen. "telegram-desktop" executable will be used in your _$PATH_, so make sure it exists, in most cases an installation of `telegram-desktop` package should be enough. (_This is added not because I'm huge fan of this software or because they pay me, but as I'm using it to communicate with some regular people, and found it useful as drop down app, it may be useful for someone too. If you're not using it, it'll be enough to remove Alt+F1 keybinding in config:_ `Key F1 A M DropDown telegram-desktop...`)  
+* **Drop down telegram client** is added too, press Alt+F1 and it will be displayed on left side of screen. "telegram-desktop" executable will be used in your _$PATH_, so make sure it exists, in most cases an installation of `telegram-desktop` package should be enough. (_This is added not because I'm a huge fan of this software or because they pay me, but as I'm using it to communicate with some regular people, and found it useful as a drop down app, it may be useful for someone else too. If you're not using it, it'll be enough to remove Alt+F1 keybinding in config:_ `Key F1 A M DropDown telegram-desktop...`)  
 
 ---
 
@@ -64,7 +64,7 @@ it is available via Ctrl+Alt+D, or when pressing dock tray borders (screen botto
 
 Icon middle click will close iconified application, window title middle click will maximize/unmaximize window, close title button middle click will kill application. Some other common keybindings: Super+Q - close, Super+A - iconify, Super+C - deiconify previous, Super+W - maximize, Super+D - lower/raise window. Alt+Tab is working as expected, Super+Tab/Super+Shift+Tab - raise and focus next/prev window. All keybindings may be found under "Keybindings" section of ~/.fvwm/config .  
 
-To enable **dzen2 sound volume notifications**, when using sound media keys, [download vol.sh script](https://raw.githubusercontent.com/111LUX/777/main/vol.sh), save "vol.sh" to your _$PATH_ as executable and restart FVWM.  No further configuration required, as these lines are already present in ~/.fvwm/config :  
+To enable **dzen2 sound volume notifications**, when using laptop/keyboard sound volume media keys, [download vol.sh script](https://raw.githubusercontent.com/111LUX/777/main/vol.sh), save "vol.sh" to your _$PATH_ as executable and restart FVWM.  No further configuration required, as these lines are already present in ~/.fvwm/config :  
 ```
 Test (X vol.sh) Key XF86AudioRaiseVolume A A Exec exec vol.sh up
 Test (X vol.sh) Key XF86AudioLowerVolume A A Exec exec vol.sh down
@@ -143,3 +143,27 @@ TitleStyle Centered Height 30
 ![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/titlebuttons2.png)  
 
 ![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/titlebuttons.png)
+
+
+---
+
+### Customizing colors
+Colors may be easily changed using colorsets section of ~/.fvwm/config file.
+![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/222.png)  
+To achieve similar decorations as on screenshot above, these lines should be added/edited:
+```
+Style * BorderWidth 2, HandleWidth 2
+TitleStyle Centered Height 28
+TitleStyle Active DGradient 999 4 #111111 10 #141414 40 #822CA9 30 #FFC137 20 #FF3D29
+```  
+```
+# Colorset <number> background, foreground, foreground shadow
+Colorset 111 bg #111111, fg white, fgsh black
+Colorset 333 bg #333333, fg white, fgsh black
+Colorset 666 bg #666666, fg white, fgsh black
+Colorset 777 bg #777777, fg #e7e7e7, fgsh black
+# Set colorsets
+Style * HilightColorset 111, IconBackgroundColorset 666, Colorset 777
+Style * HilightBorderColorset 111, BorderColorset 777
+MenuStyle * MenuColorset 333, TitleColorset 333, ActiveColorset 111
+```
