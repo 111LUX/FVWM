@@ -1,4 +1,3 @@
-## Solid FVWM configuration
 ![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/333.png)
 
 **GREETINGS & CONGRATULATIONS**  
