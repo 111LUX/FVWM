@@ -10,6 +10,10 @@ Why is it great?
 **Compatible with everything, where FVWM2/3 may be installed.**
 Personally, I recommend to use Devuan (devuan.org) and OpenBSD (openbsd.org), depending on your hardware and use case. Should work with all not too old FVWM2 versions (tested with 2.6+) and also with FVWM3 as well.  
 
+### WARNING !  
+![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/noicons.png)  
+**Since new Xlib version was introduced, which is in use in Debian stable (bookworm) and newer distros, annoying bug appeared** (in such distros with new Xlib): icons of iconified applications may dissapear sometimes randomly and always on FVWM restart. And by the end of 2024 it is not fixed yet in both FVWM 2/3 versions. As a workaround solution, for FVWM 2 version: apply xthread_fix.patch — https://github.com/fvwmorg/fvwm3/issues/818#issuecomment-1710549061 and siebenmann's patch — https://github.com/fvwmorg/fvwm3/issues/818#issuecomment-1401144381 to fvwm2 source code and then build it and install. For all FVWM 3 versions prior to 1.1.0 it is possible to apply siebenmann's patch too (xthread_fix.patch is not needed). 
+
 ---
 
 ### INSTALLATION  
