@@ -8,7 +8,7 @@ Why is it Great?
 3. It is great by its appearance, light, integrated look and is theme independent. Initially it was intended to use with Vertex GTK theme (as it was posted on couple of forums couple of years ago), but now it's compatible with every bright or dark Qt/GTK theme you want (e.g numix-gtk-theme in package repositories).
 
 **Compatible with everything, where FVWM2/3 may be installed.**
-Personally, I recommend to use [Devuan](devuan.org) and [OpenBSD](openbsd.org), depending on your hardware and use case. Should work with all not too old FVWM2 versions (tested with 2.6+) and also with FVWM3 as well.  
+Personally, I recommend to use [Devuan](https://devuan.org) and [OpenBSD](https://openbsd.org), depending on your hardware and use case. Should work with all not too old FVWM2 versions (tested with 2.6+) and also with FVWM3 as well.  
 
 ### WARNING  
 ![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/noicons.png)  
