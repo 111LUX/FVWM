@@ -18,12 +18,13 @@ Personally, I recommend to use [Devuan](https://devuan.org) and [OpenBSD](https:
 
 **For FVWM2**
 1. [Download fvwm 2.7 source code](https://github.com/fvwmorg/fvwm/releases) and extract it.
-2. Replace ___<fvwm_source_dir>/fvwm/events.c___ with its [patched version](https://github.com/111LUX/777/blob/main/events.c-patched?raw=true).
-3. Replace ___<fvwm_source_dir>/libs/FEvent.c___ with its [patched version](https://github.com/111LUX/777/blob/main/FEvent.c-patched?raw=true).
-4. Replace ___<fvwm_source_dir>/libs/FEvent.h___ with its [patched version](https://github.com/111LUX/777/blob/main/FEvent.h-patched?raw=true).
+2. Replace ___<fvwm_source_dir>/fvwm/events.c___ with [patched version](https://github.com/111LUX/777/blob/main/events.c-patched?raw=true).
+3. Replace ___<fvwm_source_dir>/libs/FEvent.c___ with [patched version](https://github.com/111LUX/777/blob/main/FEvent.c-patched?raw=true).
+4. Replace ___<fvwm_source_dir>/libs/FEvent.h___ with [patched version](https://github.com/111LUX/777/blob/main/FEvent.h-patched?raw=true).
 5. Install fvwm build dependencies and remove fvwm package: ```$ sudo apt build-dep fvwm && sudo apt remove fvwm``` .
-6. Then ```cd``` to ___<fvwm_source_dir>___ and build it and install.
-7. ```$ ./autogen.sh && make && sudo make install``` .
+6. Then ```cd``` to ___<fvwm_source_dir>___ and build it and install.  
+7. ```$ ./autogen.sh && make && sudo make install``` .  
+  
 It'll be installed to _/usr/local/_ .
 
 **For FVWM3**  
