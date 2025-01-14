@@ -2,17 +2,36 @@
 
 **GREETINGS & CONGRATULATIONS**  
 You've navigated to page, where advanced, original and great FVWM configuration may be downloaded.  
-Why is it great?  
+Why is it Great?  
 1. It is modern and ready to use, so even users of modern desktop environments won't be missing something. It's containing functionality from modern window managers (including its focus policy) and some unique features. Moreover, it's superior by its usability, stability and speed.  
 2. It is lightweight and simple by design, so easily customizable. The whole configuration includes one "icons" directory and three files: "autostart" (sh script with startup applications), "config" (FVWM configuration file) and "exit" (FvwmScript exit dialog). Also, with its relevant and advanced functions, it'll be a great start for a new FVWM user as well.  
 3. It is great by its appearance, light, integrated look and is theme independent. Initially it was intended to use with Vertex GTK theme (as it was posted on couple of forums couple of years ago), but now it's compatible with every bright or dark Qt/GTK theme you want (e.g numix-gtk-theme in package repositories).
 
 **Compatible with everything, where FVWM2/3 may be installed.**
-Personally, I recommend to use Devuan (devuan.org) and OpenBSD (openbsd.org), depending on your hardware and use case. Should work with all not too old FVWM2 versions (tested with 2.6+) and also with FVWM3 as well.  
+Personally, I recommend to use [Devuan](devuan.org) and [OpenBSD](openbsd.org), depending on your hardware and use case. Should work with all not too old FVWM2 versions (tested with 2.6+) and also with FVWM3 as well.  
 
-### WARNING !  
+### WARNING  
 ![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/noicons.png)  
-**Since new Xlib version was introduced, which is in use in Debian stable (bookworm) and newer distros, annoying bug appeared** (in such distros with new Xlib): icons of iconified applications may dissapear sometimes randomly and always on FVWM restart. And by the end of 2024 it is not fixed yet in both FVWM 2/3 versions. As a workaround solution, for FVWM 2 version: apply xthread_fix.patch — https://github.com/fvwmorg/fvwm3/issues/818#issuecomment-1710549061 and siebenmann's patch — https://github.com/fvwmorg/fvwm3/issues/818#issuecomment-1401144381 to fvwm2 source code and then build it and install. For all FVWM 3 versions prior to 1.1.0 it is possible to apply siebenmann's patch too (xthread_fix.patch is not needed). 
+**Since new Xlib version was introduced, which is in use in Debian 12 (stable) AKA Devuan Daedalus and newer distros, annoying bug appeared** (in such distros with new Xlib): icons of iconified applications may dissapear sometimes randomly and always on FVWM restart. And by the end of 2024 this is not fixed yet in both FVWM 2/3 versions. As a workaround solution, for FVWM 2 version: manually apply xthread_fix.patch — https://github.com/fvwmorg/fvwm3/issues/818#issuecomment-1710549061 and siebenmann's patch — https://github.com/fvwmorg/fvwm3/issues/818#issuecomment-1401144381 to fvwm2 source code and then build it and install. For FVWM 3 versions it is possible to apply siebenmann's patch too (xthread_fix.patch is not needed).  
+  
+**Simple step by step Guide to fix icons**
+
+**For FVWM2**
+1. [Download fvwm 2.7 source code](https://github.com/fvwmorg/fvwm/releases) and extract it.
+2. Replace ___<fvwm_source_dir>/fvwm/events.c___ with its [patched version](https://github.com/111LUX/777/blob/main/events.c-patched?raw=true).
+3. Replace ___<fvwm_source_dir>/libs/FEvent.c___ with its [patched version](https://github.com/111LUX/777/blob/main/FEvent.c-patched?raw=true).
+4. Replace ___<fvwm_source_dir>/libs/FEvent.h___ with its [patched version](https://github.com/111LUX/777/blob/main/FEvent.h-patched?raw=true).
+5. Install fvwm build dependencies and remove fvwm package: ```$ sudo apt build-dep fvwm && sudo apt remove fvwm``` .
+6. Then ```cd``` to ___<fvwm_source_dir>___ and build it and install.
+7. ```$ ./autogen.sh && make && sudo make install``` .
+It'll be installed to _/usr/local/_ .
+
+**For FVWM3**  
+1. [Download fvwm 3 version 1.1.1 source code](https://github.com/fvwmorg/fvwm3/releases) and extract it.
+2. Replace ___<fvwm_source_dir>/libs/FEvent.c___ with its [patched version](https://github.com/111LUX/777/blob/main/FEvent.c-1.1.1-patched?raw=true).
+3. Install fvwm3 build dependencies and remove fvwm3 package: ```$ sudo apt build-dep fvwm3 && sudo apt remove fvwm3``` .
+4. Then ```cd``` to ___<fvwm_source_dir>___ and build it and install.
+5. ```$ ./autogen.sh && ./configure --prefix=/usr/local && make && sudo make install``` .
 
 ---
 
