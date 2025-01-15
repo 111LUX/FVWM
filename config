@@ -1,4 +1,4 @@
-### ### ### ### ### ### ### Solid FVWM configuration
+### ### ### ### ### ### ### Great FVWM configuration
 
 # X session environment variables
 #SetEnv PATH /bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:$[HOME]/.local/bin
@@ -73,6 +73,7 @@ ButtonStyle All ActiveDown -- !Flat
 
 # Vertex title buttons
 #ButtonStyle All Pixmap v_button.png -- Flat
+#ButtonStyle All Inactive Pixmap v_button_inactive.png -- Flat
 #ButtonStyle 1 ActiveDown Pixmap v_button_close.png -- Flat
 #ButtonStyle 3 ActiveDown Pixmap v_button_iconify.png -- Flat
 #ButtonStyle 5 ActiveDown Pixmap v_button_maximize.png -- Flat
@@ -222,7 +223,7 @@ AddToFunc LeftIconClick
 	+ H FvwmIdent
 # Deiconify prev iconified application
 AddToFunc UndoIconify
-	+ I Prev (Iconic, !DropDownTerm, !TelegramDesktop) Iconify false
+	+ I Prev (Iconic, !DropDownTerm) Iconify false
 	+ I TransferFocus
 # Show desktop/restore functions
 AddToFunc ShowDesktop
@@ -248,10 +249,9 @@ AddToFunc DeiconifyAction
 	# FvwmEvent part of ShowDesktop function
 	+ I All (CurrentDesk, Iconifiable) State 9 false
 *FvwmEvent: deiconify DeiconifyAction
-# Set correct initial DropDown applications size and position
+# Set correct initial DropDown terminal size and position
 AddToFunc NewWindowAction
 	+ I ThisWindow (DropDownTerm) ResizeMove 100 60 0 0
-	+ I ThisWindow (TelegramDesktop, !Media\ viewer) ResizeMove 555p 91 0 0
 	# FvwmEvent part of ShowDesktop function
 	+ I All (CurrentDesk, Iconifiable) State 9 false
 *FvwmEvent: add_window NewWindowAction
@@ -263,10 +263,9 @@ AddToFunc DropDown
 	+ I TestRc (!Match) All ($1, !Focused) Raise
 	+ I TestRc (!Match) All ($1) Iconify true
 	+ I All ($1) FlipFocus
-# DropDown applications. Ctrl+F1 - terminal, Alt+F1 - telegram
+# DropDown applications. Ctrl+F1 - terminal
 # Usage: DropDown 'app_command -flags' app_class width(p) height(p) position_x(p) position_y(p)
 Key F1 A C DropDown '$[infostore.terminal] -name DropDownTerm' DropDownTerm 100 60 0 0
-Key F1 A M DropDown telegram-desktop TelegramDesktop 555p 91 0 0
 
 #
 # Keybindings
@@ -410,10 +409,8 @@ Style qpdfview UseStyle MuPDF
 Style Peek TitleFormat Peek, Sticky, NoDecorHint, Layer 6
 Style Viewnior !UsePPosition
 Style Wine Lenience, HintOverride, Iconifiable, Closable
-# DropDown applications
-Style DropDownTerm !Title, !Borders, !Icon, WindowListSkip, Sticky, !Closable, PositionPlacement 0 0
-Style TelegramDesktop !Title, !Icon, WindowListSkip, Sticky, PositionPlacement 0 0, !UsePPosition
 # Modules
+Style DropDownTerm !Title, !Borders, !Icon, WindowListSkip, Sticky, !Closable, PositionPlacement 0 0
 Style FvwmIdent WindowListSkip, NeverFocus, !Title
 Style FvwmButtons !Maximizable, !Iconifiable, !Title, !Borders, Sticky, NeverFocus, WindowListSkip, CirculateSkip, FixedSize, FixedPosition, !Closable
 Style FvwmScript !Button 3, !Button 5, PositionPlacement Center, FixedSize, FixedPosition, !Iconifiable, !Maximizable, Layer 6
