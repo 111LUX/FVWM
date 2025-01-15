@@ -51,13 +51,13 @@ $ mv ~/FVWM ~/.fvwm
 ```
 # apt install xcompmgr stalonetray suckless-tools dzen2
 ```
-* _dzen2_ is an optional dependency, but with this package installed, you'll get nice top screen notifications with current Desk number, when switching it with Super+F1/F2/F3/F4 (to move window to certain Desk use Super+1/2/3/4) or Super+PgUp/PgDown. Also, it may be used to display sound volume notifications too, when changing it with your keyboard/laptop multimedia hotkeys — [read bellow](https://github.com/111LUX/GFVWM#to-enable-dzen2-sound-volume-notifications).  
+* _dzen2_ is an optional dependency, but with this package installed, you'll get nice top screen notifications with current Desk number, when switching it with Super+F1/F2/F3/F4 (to move window to certain Desk use Super+1/2/3/4) or Super+PgUp/PgDown. Also, it may be used to display sound volume notifications too, when changing it with your keyboard/laptop multimedia hotkeys — [read bellow](#to-enable-dzen2-sound-volume-notifications).  
 ![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/dzen.png)  
 
 * _dmenu_ launcher from "suckless-tools" package will be required, in certain repositories it's packaged simply as `dmenu`. For a command history support, additionally download [dmenu_run_history](https://tools.suckless.org/dmenu/scripts/dmenu_run_with_command_history/) script and save it to your _$PATH_ as executable (e.g `# cp dmenu_run_history /usr/local/bin/` and `# chmod +x /usr/local/bin/dmenu_run_history`), then configuration file will use it instead of a regular dmenu as a launcher (Alt+F2).  
 ![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/dmenu_run.png)  
 
-* _stalonetray_ is used as a tray application. FvwmButtons module is launching it at bottom left screen corner before icons. Alternatively, it is possible to replace `stalonetray` with `wmsystemtray` package [read bellow](https://github.com/111LUX/GFVWM#to-replace-stalonetray-with-wmsystemtray-tray-application).  
+* _stalonetray_ is used as a tray application. FvwmButtons module is launching it at bottom left screen corner before icons. Alternatively, it is possible to replace `stalonetray` with `wmsystemtray` package [read bellow](#to-replace-stalonetray-with-wmsystemtray-tray-application).  
 ![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/dock.png)  
 
 * _xcompmgr_ compositing manager configured pretty well via its command line options in configuration file, also it's using server-side shadows — -s flag, which is not commonly used. It fits nicely with overall design, look and feel. (Alternatively, use `compton` with this [~/.config/compton.conf](https://raw.githubusercontent.com/111LUX/777/main/compton.conf) and remove "xcompmgr" lines from config/autostart files.)   
