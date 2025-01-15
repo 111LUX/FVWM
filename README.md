@@ -51,13 +51,13 @@ $ mv ~/FVWM ~/.fvwm
 ```
 # apt install xcompmgr stalonetray suckless-tools dzen2
 ```
-* _dzen2_ is an optional dependency, but with this package installed, you'll get nice top screen notifications with current Desk number, when switching it with Super+F1/F2/F3/F4 (to move window to certain Desk use Super+1/2/3/4) or Super+PgUp/PgDown. Also, it may be used to display sound volume notifications too, when changing it with your keyboard/laptop multimedia hotkeys (read bellow).  
+* _dzen2_ is an optional dependency, but with this package installed, you'll get nice top screen notifications with current Desk number, when switching it with Super+F1/F2/F3/F4 (to move window to certain Desk use Super+1/2/3/4) or Super+PgUp/PgDown. Also, it may be used to display sound volume notifications too, when changing it with your keyboard/laptop multimedia hotkeys — [read bellow](https://github.com/111LUX/GFVWM#to-enable-dzen2-sound-volume-notifications).  
 ![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/dzen.png)  
 
 * _dmenu_ launcher from "suckless-tools" package will be required, in certain repositories it's packaged simply as `dmenu`. For a command history support, additionally download [dmenu_run_history](https://tools.suckless.org/dmenu/scripts/dmenu_run_with_command_history/) script and save it to your _$PATH_ as executable (e.g `# cp dmenu_run_history /usr/local/bin/` and `# chmod +x /usr/local/bin/dmenu_run_history`), then configuration file will use it instead of a regular dmenu as a launcher (Alt+F2).  
 ![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/dmenu_run.png)  
 
-* _stalonetray_ is used as a tray application. FvwmButtons module is launching it at bottom left screen corner before icons. Alternatively, it is possible to replace `stalonetray` with `wmsystemtray` package (read bellow).  
+* _stalonetray_ is used as a tray application. FvwmButtons module is launching it at bottom left screen corner before icons. Alternatively, it is possible to replace `stalonetray` with `wmsystemtray` package [read bellow](https://github.com/111LUX/GFVWM#to-replace-stalonetray-with-wmsystemtray-tray-application).  
 ![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/dock.png)  
 
 * _xcompmgr_ compositing manager configured pretty well via its command line options in configuration file, also it's using server-side shadows — -s flag, which is not commonly used. It fits nicely with overall design, look and feel. (Alternatively, use `compton` with this [~/.config/compton.conf](https://raw.githubusercontent.com/111LUX/777/main/compton.conf) and remove "xcompmgr" lines from config/autostart files.)   
@@ -69,9 +69,8 @@ Few useful additional applications with short description (like fbxkb - tray key
 
 ---
 
-### Embedded drop down applications  
-* **Drop down terminal** is available, toggle its visibility with Ctrl+F1 hotkey. No additional actions required, it's working with every screen resolution "out of the box", urxvt terminal emulator will be used if installed, or otherwise xterm. It "remembers" its maximized state even when is hidden (maximize/unmaximize it with Super+W hotkey, or using tiling functionality - Super+Up/Down/Left/Right arrows).  
-* **Drop down telegram client** is added too, press Alt+F1 and it will be displayed on left side of screen. "telegram-desktop" executable will be used in your _$PATH_, so make sure it exists, in most cases an installation of `telegram-desktop` package should be enough. (_This is added not because I'm a huge fan of this software or because they pay me, but as I'm using it to communicate with some regular people, and found it useful as a drop down app, it may be useful for someone else too. If you're not using it, it'll be enough to remove Alt+F1 keybinding in config:_ `Key F1 A M DropDown telegram-desktop...`)  
+### Embedded drop down terminal is available  
+Toggle its visibility with Ctrl+F1 hotkey. No additional actions required, it's working with every screen resolution "out of the box", urxvt terminal emulator will be used if installed, or otherwise xterm. It "remembers" its maximized state even when is hidden (maximize/unmaximize it with Super+W hotkey, or using tiling functionality - Super+Up/Down/Left/Right arrows).
 
 ---
 
@@ -87,7 +86,8 @@ it is available via Ctrl+Alt+D, or when pressing dock tray borders (screen botto
 
 Icon middle click will close iconified application, window title middle click will maximize/unmaximize window, close title button middle click will kill application. Some other common keybindings: Super+Q - close, Super+A - iconify, Super+C - deiconify previous, Super+W - maximize, Super+D - lower/raise window. Alt+Tab is working as expected, Super+Tab/Super+Shift+Tab - raise and focus next/prev window. All keybindings may be found under "Keybindings" section of ~/.fvwm/config .  
 
-To enable **dzen2 sound volume notifications**, when using laptop/keyboard sound volume media keys, [download vol.sh script](https://raw.githubusercontent.com/111LUX/777/main/vol.sh), save "vol.sh" to your _$PATH_ as executable and restart FVWM.  No further configuration required, as these lines are already present in ~/.fvwm/config :  
+#### To enable **dzen2 sound volume notifications**,  
+when using laptop/keyboard sound volume media keys, [download vol.sh script](https://raw.githubusercontent.com/111LUX/777/main/vol.sh), save "vol.sh" to your _$PATH_ as executable and restart FVWM.  No further configuration required, as these lines are already present in ~/.fvwm/config :  
 ```
 Test (X vol.sh) Key XF86AudioRaiseVolume A A Exec exec vol.sh up
 Test (X vol.sh) Key XF86AudioLowerVolume A A Exec exec vol.sh down
@@ -109,16 +109,18 @@ Test (X urxvt) InfoStoreAdd terminal urxvt
 Test (!X urxvt) InfoStoreAdd terminal xterm
 ```
 
-"tray" and "traycommand" variables are setting tray application. By default stalonetray will be launched automatically with FVWM, and when any tray application will be started (like telegram-desktop), its icon will appear in bottom left corner.  
+"tray" and "traycommand" variables are setting tray application. By default stalonetray will be launched automatically with FVWM, and when any tray application will be started, its icon will appear in bottom left corner.  
+  
 ![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/wmsystemtray.png)  
-Also, it is possible to **replace stalonetray with wmsystemtray tray application**,  
-just replace "InfoStoreAdd tray" and "InfoStoreAdd traycommand" lines,  
-kill stalonetray `$ pkill stalonetray` and restart FVWM.  
+#### To replace stalonetray with wmsystemtray tray application,   
+just replace "InfoStoreAdd tray" and "InfoStoreAdd traycommand" lines:  
 ```
 InfoStoreAdd tray wmsystemtray
 InfoStoreAdd traycommand 'wmsystemtray --non-wmaker'
-```
-   
+```  
+Then kill stalonetray `$ pkill stalonetray` and restart FVWM.  
+<br />
+<br />
 **To change FVWM fonts**, replace "font" and "titlefont" variables with fonts of your choice, for example:  
 ```
 InfoStoreAdd font 'Shadow=1:xft:Liberation Sans:size=10'
