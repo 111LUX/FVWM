@@ -57,7 +57,7 @@ $ mv ~/FVWM ~/.fvwm
 * _dmenu_ launcher from "suckless-tools" package will be required, in certain repositories it's packaged simply as `dmenu`. For a command history support, additionally download [dmenu_run_history](https://tools.suckless.org/dmenu/scripts/dmenu_run_with_command_history/) script and save it to your _$PATH_ as executable (e.g `# cp dmenu_run_history /usr/local/bin/` and `# chmod +x /usr/local/bin/dmenu_run_history`), then configuration file will use it instead of a regular dmenu as a launcher (Alt+F2).  
 ![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/dmenu_run.png)  
 
-* _stalonetray_ is used as a tray application. FvwmButtons module is launching it at bottom left screen corner before icons. Alternatively, it is possible to replace `stalonetray` with `wmsystemtray` package [read bellow](#to-replace-stalonetray-with-wmsystemtray-tray-application).  
+* _stalonetray_ is used as a tray application. FvwmButtons module is launching it at bottom left screen corner before icons. Alternatively, it is possible to replace `stalonetray` with `wmsystemtray` package, to know how — [read bellow](#to-replace-stalonetray-with-wmsystemtray-tray-application).  
 ![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/dock.png)  
 
 * _xcompmgr_ compositing manager configured pretty well via its command line options in configuration file, also it's using server-side shadows — -s flag, which is not commonly used. It fits nicely with overall design, look and feel. (Alternatively, use `compton` with this [~/.config/compton.conf](https://raw.githubusercontent.com/111LUX/777/main/compton.conf) and remove "xcompmgr" lines from config/autostart files.)   
@@ -150,6 +150,7 @@ To choose it, comment and uncomment appropriate "title buttons" section in the c
 
 # Vertex title buttons
 ButtonStyle All Pixmap v_button.png -- Flat
+ButtonStyle All Inactive Pixmap v_button_inactive.png -- Flat
 ButtonStyle 1 ActiveDown Pixmap v_button_close.png -- Flat
 ButtonStyle 3 ActiveDown Pixmap v_button_iconify.png -- Flat
 ButtonStyle 5 ActiveDown Pixmap v_button_maximize.png -- Flat
