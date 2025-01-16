@@ -12,7 +12,7 @@ Personally, I recommend to use [Devuan](https://devuan.org) and [OpenBSD](https:
 
 ### WARNING  
 ![](https://raw.githubusercontent.com/111LUX/SCREENSHOTS/main/noicons.png)  
-**Since new Xlib version was introduced, which is in use in Debian 12 (stable) AKA Devuan Daedalus and newer distros, annoying bug appeared** (in such distros with new Xlib): icons of iconified applications may dissapear sometimes randomly and always on FVWM restart. And by the end of 2024 this is not fixed yet in both FVWM 2/3 versions. As a workaround solution, for FVWM 2 version: manually apply xthread_fix.patch — https://github.com/fvwmorg/fvwm3/issues/818#issuecomment-1710549061 and siebenmann's patch — https://github.com/fvwmorg/fvwm3/issues/818#issuecomment-1401144381 to fvwm2 source code and then build it and install. For FVWM 3 versions it is possible to apply siebenmann's patch too (xthread_fix.patch is not needed).  
+**Since new Xlib version was introduced, which is in use in Debian 12 (stable) AKA Devuan Daedalus and newer, annoying bug appeared** (in such distros and OS-es with new Xlib): icons of iconified applications may dissapear sometimes randomly and always on FVWM restart. And by the end of 2024 this is not fixed yet in both FVWM 2/3 versions. As a workaround solution, for FVWM 2 version: manually apply xthread_fix.patch — https://github.com/fvwmorg/fvwm3/issues/818#issuecomment-1710549061 and siebenmann's patch — https://github.com/fvwmorg/fvwm3/issues/818#issuecomment-1401144381 to fvwm2 source code and then build it and install. For FVWM 3 versions it is possible to apply siebenmann's patch too (xthread_fix.patch is not needed).  
   
 ### Step by step guide to fix icons bug  
 
